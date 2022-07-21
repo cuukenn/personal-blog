@@ -9,7 +9,7 @@ description: ''
 keywords:
 author: changgg
 language: zh
-timezone: 'GMT+8'
+timezone: 'Etc/GMT+8'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
