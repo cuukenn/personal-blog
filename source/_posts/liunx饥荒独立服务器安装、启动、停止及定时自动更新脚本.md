@@ -1,5 +1,13 @@
-﻿
-# liunx饥荒独立服务器安装、启动、停止及定时自动更新脚本
+﻿---
+title: liunx饥荒独立服务器安装、启动、停止及定时自动更新脚本
+description: liunx饥荒独立服务器安装、启动、停止及定时自动更新脚本
+date: 2022-07-22 12:00:00
+tags: 
+  - shell
+categories: 
+  - program
+---
+
 注：
  - 部分基础内容摘自：[https://blog.csdn.net/szhiy/article/details/79996017](https://blog.csdn.net/szhiy/article/details/79996017)
  - 增加内容：定时更新、安装及启停脚本
@@ -7,6 +15,8 @@
  - 小内存机器无法同时启动地上、地下服务器：增加swap分区[https://www.cnblogs.com/chentop/p/10330052.html](https://www.cnblogs.com/chentop/p/10330052.html)
 
 ###  一、解决环境依赖   ###
+
+<!-- more -->
 
 - Ubuntu 系统需要的依赖：
 ```shell
