@@ -1,0 +1,40 @@
+scheme: Gemini
+menu:
+  home: / || fa fa-home
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-th
+  archives: /archives/ || fa fa-archive
+menu_icons:
+  enable: true
+symbols_count_time:
+  separated_meta: false
+  item_text_total: true
+sidebar:
+  position: left
+  display: post
+avatar: 
+  url: /images/avatar.png
+  rounded: true
+social:
+  GitHub: https://github.com/cuukenn || fab fa-github
+  Gitee:  https://gitee.com/cuukenn  ||  fab fa-gitee
+  CSDN:   https://blog.csdn.net/qq_36759091?type=blog ||  fab fa-csdn
+  E-Mail: 891842749@qq.com           || fa fa-envelope
+social_icons:
+  enable: true
+post_wordcount:
+  item_text: true
+  wordcount: true
+  min2read: true
+  totalcount: false
+  separated_meta: true
+local_search:
+  enable: true
+  trigger: auto
+  top_n_per_article: 1
+custom_file_path:
+  style: source/_data/styles.styl
+# 动画
+motion:
+  #关闭动画，太慢了
+  enable: false
