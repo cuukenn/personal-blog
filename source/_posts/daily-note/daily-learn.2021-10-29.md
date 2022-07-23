@@ -1,10 +1,11 @@
 ---
 title: 2021-10-29 日常杂记
-date: 2022-07-22 12:00:00
-tags: 
+tags:
   - daily-note
-categories: 
+categories:
   - program
+abbrlink: ee2ed89c
+date: 2022-07-22 12:00:00
 ---
 
 - DDD Repository变更追踪

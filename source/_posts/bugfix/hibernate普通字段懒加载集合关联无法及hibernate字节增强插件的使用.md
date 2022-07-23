@@ -1,11 +1,12 @@
 ---
 title: hibernate普通字段懒加载集合关联无法保存的解决方法，及hibernate字节增强插件的使用
+tags:
+  - bugfix
+  - database
+categories:
+  - program
+abbrlink: ece0d388
 date: 2022-07-22 12:00:00
-tags: 
-    - bugfix
-    - database
-categories: 
-    - program
 ---
 
 首先请查看[Hibernate 5 & JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客](https://blog.csdn.net/windsigirl123/article/details/60957632 "Hibernate 5 & JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客")，通过模仿这篇文章确实可以产生效果，但是出现ManyToMany的集合关联时，即存在集合关联懒加载时，不能单纯的模仿博文提到的普通字段的修改方式。

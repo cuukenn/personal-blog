@@ -1,10 +1,11 @@
 ---
 title: shell脚本随记
-date: 2022-07-22 12:00:00
-tags: 
+tags:
   - shell
-categories: 
+categories:
   - program
+abbrlink: 5ab84bc0
+date: 2022-07-22 12:00:00
 ---
 
 ##### 1.脚本相关

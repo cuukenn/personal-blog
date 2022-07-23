@@ -1,10 +1,11 @@
 ---
 title: junit随记
-date: 2022-07-22 12:00:00
-tags: 
+tags:
   - junit
-categories: 
+categories:
   - program
+abbrlink: c96d5477
+date: 2022-07-22 12:00:00
 ---
 
 #### 1.本次重新回顾，重新熟悉Junit的注解，了解新注解@Rule

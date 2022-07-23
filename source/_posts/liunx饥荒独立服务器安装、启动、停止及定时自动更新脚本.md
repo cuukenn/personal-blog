@@ -1,11 +1,12 @@
-﻿---
+---
 title: liunx饥荒独立服务器安装、启动、停止及定时自动更新脚本
 description: liunx饥荒独立服务器安装、启动、停止及定时自动更新脚本
-date: 2022-07-22 12:00:00
-tags: 
+tags:
   - shell
-categories: 
+categories:
   - program
+abbrlink: d950863
+date: 2022-07-22 12:00:00
 ---
 
 注：

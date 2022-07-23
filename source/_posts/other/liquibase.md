@@ -1,11 +1,12 @@
 ---
 title: liquibase随记
-date: 2022-07-22 12:00:00
-tags: 
+tags:
   - liquibase
   - java
-categories: 
+categories:
   - program
+abbrlink: 2409a02f
+date: 2022-07-22 12:00:00
 ---
 
 AbstractSqlStatement：修改表结构的抽象类，存在很多相关子类。

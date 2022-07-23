@@ -1,0 +1,15 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+Allow: /page/
+Allow: /archives/
+Allow: /tags/
+Allow: /categories/
+Allow: /posts/
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /images/
+
+Sitemap: http://cuukenn.github.io/baidusitemap.xml

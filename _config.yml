@@ -12,8 +12,10 @@ language: zh-CN
 timezone: 'Etc/GMT+8'
 # URL
 url: https://cuukenn.github.io
-permalink: :year/:month/:day/:title/
-permalink_defaults:
+permalink: posts/:abbrlink.html
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: hex    # 进制：dec(default) and hex
 pretty_urls:
   trailing_index: true
   trailing_html: true
@@ -39,3 +41,8 @@ search:
   field: post
   format: html
   limit: 10000
+nofollow:
+  enable: true
+  field: site
+  exclude:
+    - 'cuukenn.github.io'
