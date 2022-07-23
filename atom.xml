@@ -6,7 +6,7 @@
   <link href="https://cuukenn.github.io/atom.xml" rel="self"/>
   
   <link href="https://cuukenn.github.io/"/>
-  <updated>2022-07-22T09:31:17.808Z</updated>
+  <updated>2022-07-23T12:21:39.722Z</updated>
   <id>https://cuukenn.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>liunx饥荒独立服务器安装、启动、停止及定时自动更新脚本</title>
-    <link href="https://cuukenn.github.io/2022/07/23/liunx%E9%A5%A5%E8%8D%92%E7%8B%AC%E7%AB%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E3%80%81%E5%90%AF%E5%8A%A8%E3%80%81%E5%81%9C%E6%AD%A2%E5%8F%8A%E5%AE%9A%E6%97%B6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/"/>
-    <id>https://cuukenn.github.io/2022/07/23/liunx%E9%A5%A5%E8%8D%92%E7%8B%AC%E7%AB%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E3%80%81%E5%90%AF%E5%8A%A8%E3%80%81%E5%81%9C%E6%AD%A2%E5%8F%8A%E5%AE%9A%E6%97%B6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</id>
+    <link href="https://cuukenn.github.io/posts/d950863.html"/>
+    <id>https://cuukenn.github.io/posts/d950863.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.808Z</updated>
+    <updated>2022-07-23T12:21:39.722Z</updated>
     
     <content type="html"><![CDATA[<p>注：</p><ul><li>部分基础内容摘自：<a href="https://blog.csdn.net/szhiy/article/details/79996017">https://blog.csdn.net/szhiy/article/details/79996017</a></li><li>增加内容：定时更新、安装及启停脚本</li><li>脚本下载地址：<a href="https://github.com/love390/dontstarveserver">https://github.com/cuukenn/dontstarveserver</a></li><li>小内存机器无法同时启动地上、地下服务器：增加swap分区<a href="https://www.cnblogs.com/chentop/p/10330052.html">https://www.cnblogs.com/chentop/p/10330052.html</a></li></ul><h3 id="一、解决环境依赖"><a href="#一、解决环境依赖" class="headerlink" title="一、解决环境依赖"></a>一、解决环境依赖</h3><span id="more"></span><ul><li>Ubuntu 系统需要的依赖：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libstdc++6:i386 libgcc1:i386 libcurl4-gnutls-dev:i386 lib32gcc1</span><br></pre></td></tr></table></figure></li><li>CentOS 系统需要的依赖 (仅供参考)：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install glibc.i686 libstdc++.i686 libcurl4-gnutls-dev.i686 libcurl.i686</span><br></pre></td></tr></table></figure></li></ul><h3 id="二，创建专用用户"><a href="#二，创建专用用户" class="headerlink" title="二，创建专用用户"></a>二，创建专用用户</h3> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd steam</span><br><span class="line">password steam</span><br><span class="line">su steam</span><br></pre></td></tr></table></figure><p> 注：相关脚本涉及根路径为&#x2F;home&#x2F;steam,不创建特定用户修改对应脚本路径也没问题</p><h3 id="二、安装-SteamCMD"><a href="#二、安装-SteamCMD" class="headerlink" title="二、安装 SteamCMD"></a>二、安装 SteamCMD</h3><ul><li>此目录用于 steam 程序的安装目录。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/steamcmd</span><br></pre></td></tr></table></figure></li><li>下载 SteamCMD 安装文件<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P ~/steamcmd https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz</span><br></pre></td></tr></table></figure></li><li>解压压缩包<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/steamcmd</span><br><span class="line">tar -xvzf ~/steamcmd/steamcmd_linux.tar.gz</span><br></pre></td></tr></table></figure></li></ul><h3 id="三、安装饥荒服务端"><a href="#三、安装饥荒服务端" class="headerlink" title="三、安装饥荒服务端"></a>三、安装饥荒服务端</h3><ul><li>准备好相关文件(暂时放到&#x2F;home&#x2F;steam目录)<ul><li>cron_update_starve.sh：用于cron定时调度完成服务器更新的脚本</li><li>update_starve.cmd：steamcmd运行时实际命令</li><li>update_starve.sh：用于下载饥荒服务器至指定目录</li><li>start.sh：在后台启动地上地上服务器</li><li>start_master.sh：前台启动地上服务器</li><li>start_cave.sh：前台启动地下服务器</li><li>stop.sh：停止所有服务器</li></ul></li><li>赋予执行权限<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- chmod u+x *.sh</span><br></pre></td></tr></table></figure></li><li>启动安装脚本<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./update_starve.sh</span><br></pre></td></tr></table></figure></li><li>移动启停脚本<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv start* /home/steam/common/dstserver/bin</span><br><span class="line">mv stop*  /home/steam/common/dstserver/bin</span><br></pre></td></tr></table></figure></li></ul><h3 id="四，准备游戏存档及mods"><a href="#四，准备游戏存档及mods" class="headerlink" title="四，准备游戏存档及mods"></a>四，准备游戏存档及mods</h3><ul><li>复制相关mods至&#x2F;home&#x2F;steam&#x2F;common&#x2F;dstserver&#x2F;mods</li><li>复制存档至&#x2F;home&#x2F;steam&#x2F;.Klei\DoNotStarveTogether\Cluster_1</li></ul><h3 id="五，解决一个-lib-缺失"><a href="#五，解决一个-lib-缺失" class="headerlink" title="五，解决一个 lib 缺失"></a>五，解决一个 lib 缺失</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /home/steam/common/dstserver/bin/lib32</span><br><span class="line">ln -s /usr/lib/libcurl.so.4 libcurl-gnutls.so.4</span><br></pre></td></tr></table></figure><h3 id="六，设置定时调度"><a href="#六，设置定时调度" class="headerlink" title="六，设置定时调度"></a>六，设置定时调度</h3><ul><li>centos<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable crond</span><br><span class="line">systemctl start  crond</span><br></pre></td></tr></table></figure>使用crontab -e后写入：0 3 * *  * &#x2F;home&#x2F;steam&#x2F;cron_update_starve.sh，保存<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure></li></ul><h3 id="七、预期文件目录结构（仅保留核心内容）"><a href="#七、预期文件目录结构（仅保留核心内容）" class="headerlink" title="七、预期文件目录结构（仅保留核心内容）"></a>七、预期文件目录结构（仅保留核心内容）</h3><p>│&#x2F;steam<br>├──common<br>│   └── dstserver<br>│       ├── bin<br>│       │   ├── start_cave.sh<br>│       │   ├── start_master.sh<br>│       │   ├── start.sh<br>│       │   ├── steam_appid.txt<br>│       │   └── stop.sh<br>├── steamcmd<br>│   └── steamcmd.sh<br>├── update_starve.cmd<br>└── update_starve.sh<br>├── cron_update_starve.sh</p><h3 id="八、启动及验证"><a href="#八、启动及验证" class="headerlink" title="八、启动及验证"></a>八、启动及验证</h3><ul><li>启动<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/steam/common/dstserver/bin/start.sh</span><br></pre></td></tr></table></figure></li><li>验证<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep donts</span><br></pre></td></tr></table></figure></li></ul>]]></content>
     
@@ -39,10 +39,10 @@
   
   <entry>
     <title>springboot+hibernate+ehcache的二级缓存清除方法</title>
-    <link href="https://cuukenn.github.io/2022/07/23/springboot+hibernate+ehcache%E7%9A%84%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E6%B8%85%E9%99%A4%E6%96%B9%E6%B3%95/"/>
-    <id>https://cuukenn.github.io/2022/07/23/springboot+hibernate+ehcache%E7%9A%84%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E6%B8%85%E9%99%A4%E6%96%B9%E6%B3%95/</id>
+    <link href="https://cuukenn.github.io/posts/716c16a4.html"/>
+    <id>https://cuukenn.github.io/posts/716c16a4.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.813Z</updated>
+    <updated>2022-07-23T12:21:39.726Z</updated>
     
     <content type="html"><![CDATA[<p>1：注入EntityManager</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@PersistenceContext</span><br><span class="line">private EntityManager entityManger;</span><br></pre></td></tr></table></figure><p>2：获取hibernate缓存对象</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CacheImpl cache=（CacheImpl）entityManger.getEntityManagerFactory().getCache();</span><br></pre></td></tr></table></figure><span id="more"></span><p>3:接下来就可以随心所欲过期不需要的缓存，如实体缓存，集合缓存，查询缓存等，具体方法自己去查看</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.hibernate.internal.CacheImpl类，如清除全部类型缓存是cache.evictAllRegions()</span><br></pre></td></tr></table></figure><p>主要有以下几类：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">（1）evictCollectionRegions()：集合缓存相关</span><br><span class="line">（2）evictDefaultQueryRegion();查询缓存</span><br><span class="line">（3）evictEntityRegions();实体缓存</span><br><span class="line">（4）evictQueryRegions();查询缓存</span><br><span class="line">（5）evictNaturalIdRegions();不知道什么缓存</span><br></pre></td></tr></table></figure><p>ps:有想要了解具体hibernate缓存详情的请查看友链：</p><ul><li><a href="https://www.baeldung.com/hibernate-second-level-cache" title="https://www.baeldung.com/hibernate-second-level-cache">Hibernate Second-Level Cache | Baeldung</a></li><li><a href="https://blog.csdn.net/czp11210/article/details/51996217" title="spring-data-jpa+hibernate 各种缓存的配置演示_czp11210的博客-CSDN博客">spring-data-jpa+hibernate 各种缓存的配置演示_czp11210的博客-CSDN博客</a></li></ul>]]></content>
     
@@ -68,10 +68,10 @@
   
   <entry>
     <title>2021-10-12 日常杂记</title>
-    <link href="https://cuukenn.github.io/2022/07/23/daily-note/daily-learn.2021-10-12/"/>
-    <id>https://cuukenn.github.io/2022/07/23/daily-note/daily-learn.2021-10-12/</id>
+    <link href="https://cuukenn.github.io/posts/b06b8908.html"/>
+    <id>https://cuukenn.github.io/posts/b06b8908.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.806Z</updated>
+    <updated>2022-07-23T12:21:39.720Z</updated>
     
     <content type="html"><![CDATA[<ul><li><p>@JsonComponent</p><ul><li>支持扫描内部类<span id="more"></span> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//源码摘要</span></span><br><span class="line"><span class="comment">//JsonComponentModule#addJsonBean</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">addJsonBean</span><span class="params">(Object bean, Class&lt;?&gt;[] types, Scope scope)</span> &#123;</span><br><span class="line"><span class="keyword">if</span> (bean <span class="keyword">instanceof</span> JsonSerializer) &#123;</span><br><span class="line">addJsonSerializerBean((JsonSerializer&lt;?&gt;) bean, scope, types);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (bean <span class="keyword">instanceof</span> JsonDeserializer) &#123;</span><br><span class="line">addJsonDeserializerBean((JsonDeserializer&lt;?&gt;) bean, types);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (bean <span class="keyword">instanceof</span> KeyDeserializer) &#123;</span><br><span class="line">addKeyDeserializerBean((KeyDeserializer) bean, types);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (Class&lt;?&gt; innerClass : bean.getClass().getDeclaredClasses()) &#123;</span><br><span class="line"><span class="keyword">if</span> (isSuitableInnerClass(innerClass)) &#123;</span><br><span class="line"><span class="type">Object</span> <span class="variable">innerInstance</span> <span class="operator">=</span> BeanUtils.instantiateClass(innerClass);</span><br><span class="line">addJsonBean(innerInstance, types, scope);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul></li><li><p>ResolvableType：springboot扫描泛型，jackson自定义序列化使用到这个进行相关注册</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ResolvableType.forClass(JsonDeserializer.class, deserializer.getClass()).resolveGeneric()</span><br></pre></td></tr></table></figure></li><li><p>Fieled.getGenericType: jdk自带泛型扫描</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Fieled field=XXXClass.getClass.getDeclaredField(<span class="string">&quot;xxx&quot;</span>);</span><br><span class="line">field.getGenericType();</span><br></pre></td></tr></table></figure></li><li><p>ObjectProvider: springboot的一种接口、可以作为AutoWired注入不存在bean抛错的一种替代方案<br>see: ObjectFactory</p></li><li><p>@LookUp: springboot单例bean注入原型bean的一种方法，可替代ApplicationContextAware的一种实现</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@LookUp</span></span><br><span class="line"><span class="keyword">public</span> Bean <span class="title function_">getXXX</span><span class="params">()</span>&#123;<span class="keyword">return</span> <span class="literal">null</span>&#125;</span><br></pre></td></tr></table></figure></li><li><p>jackson序列化： objectMapper.setDateFormat最好设置非线程安全的SimpleDateFormat（内部使用clone、synchronized等手段保证线程安全）</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">例如：</span><br><span class="line">DateTimeSerializerBase#_serializeAsString</span><br><span class="line">DateDeserializers#_parseDate</span><br></pre></td></tr></table></figure></li><li><p>tomcat classloader结构(classloader名称与实际类名有差异、具体需查阅资料)</p></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A(BootstrapClassloader)--&gt;B(ExtensionClassloader)</span><br><span class="line">B(ExtensionClassloader)--&gt;C(SystemClassloader)</span><br><span class="line">C(SystemClassloader)--&gt;D(CommonClassloader)</span><br><span class="line">D(CommonClassloader)--&gt;E1(CatlinaClassloader)</span><br><span class="line">D(CommonClassloader)--&gt;E2(SharedClassloader)</span><br><span class="line">E2(SharedClassloader)--&gt;F1(Webapp1Classloader)</span><br><span class="line">E2(SharedClassloader)--&gt;F2(Webapp2Classloader)</span><br><span class="line">E2(SharedClassloader)--&gt;F3(WebappXClassloader)</span><br></pre></td></tr></table></figure><ul><li><p>springboot @Scheduled特殊描述</p><ul><li>使用<font color="red">java反射getDeclaredMethods获取</font>,故类所有的方法都可以获取到并进行定时调度</li><li>注解处理类：ScheduledAnnotationBeanPostProcessor.class</li><li>默认线程池大小为1，可能导致堆积</li><li>默认使用的ScheduledThreadPoolExecutor使用DelayedWorkQueue，内部缓存了系统时间、修改系统时间不影响下次执行时间</li></ul></li><li><p>抽象类使用@Autowired规则</p><ul><li><p>增加对应属性的setXXX方法，在方法上加上@Autowired，并标注为final防止子类重写</p></li><li><p>@Transactional基于代理模式</p></li><li><p>相关类：TransactionInterceptor.class,TransactionAspectSupport.class等</p></li><li><p><font color="red">除了private、其他情况都可以成功走代理</font></p></li></ul></li><li><p>spring aop</p><ul><li><p>分为jdk和cglib</p></li><li><p>cglib底层使用ASM编制</p></li><li><p>spring环境中，private和final都无法代理、其中jdk代理报错，cglib无报错但代理失效</p></li><li><p>cglib脱离spring单独使用可以</p></li><li><p>spring中有三种实现</p><ul><li><p>AopProxy<br>  JdkDynamicAopProxy<br>  CglibAopProxy<br>ObjenesisCglibAopProxy：Objenesis作为对象new的一种方法</p></li><li><p>ProxyCreatorSupport#createAopProxy：创建AopProxy对象</p></li><li><p><font color="red">Objenesis</font></p><p>  java存在class.newinstance(),但是需要合适的构造函数，大多数情况会遇到一下情况</p><ul><li>构造函数需要参数</li><li>构造函数抛异常</li><li>有副作用的构造函数</li></ul><p>  Objenesis旨在绕过对象的构造函数克服以上的问题</p></li></ul></li></ul></li></ul>]]></content>
     
@@ -92,10 +92,10 @@
   
   <entry>
     <title>2021-10-13 日常杂记</title>
-    <link href="https://cuukenn.github.io/2022/07/23/daily-note/daily-learn.2021-10-13/"/>
-    <id>https://cuukenn.github.io/2022/07/23/daily-note/daily-learn.2021-10-13/</id>
+    <link href="https://cuukenn.github.io/posts/2d64687e.html"/>
+    <id>https://cuukenn.github.io/posts/2d64687e.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.806Z</updated>
+    <updated>2022-07-23T12:21:39.721Z</updated>
     
     <content type="html"><![CDATA[<ul><li>java shutdownhook<span id="more"></span> <ul><li>JNI DestroyJavaVM 在不存在非守护线程后调用Shutdown#shutdown</li><li>默认使用了三个插槽(默认大小为10,Runable类型)<ul><li>0：console</li><li>1：ApplicationShutdownHooks(程序使用、Runtime#getRuntime#addShutdownHook)</li><li>2：DeleteOnExitHook(文件删除)</li></ul></li><li>kill -0 PID：检查指定PID是否存在</li></ul></li><li>@Contented<ul><li>缓存行：cpu读取缓存有固定长度，当一个单元内放科多个缓存对象时会发生竞争</li><li>使用该注解会自动填充、使数据占用一整行缓存</li></ul></li></ul>]]></content>
     
@@ -114,10 +114,10 @@
   
   <entry>
     <title>2021-10-15 日常杂记</title>
-    <link href="https://cuukenn.github.io/2022/07/23/daily-note/daily-learn.2021-10-15/"/>
-    <id>https://cuukenn.github.io/2022/07/23/daily-note/daily-learn.2021-10-15/</id>
+    <link href="https://cuukenn.github.io/posts/d5a623c8.html"/>
+    <id>https://cuukenn.github.io/posts/d5a623c8.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.807Z</updated>
+    <updated>2022-07-23T12:21:39.721Z</updated>
     
     <content type="html"><![CDATA[<ul><li>nmctl,nmtui</li><li>disputor</li></ul>]]></content>
     
@@ -142,10 +142,10 @@
   
   <entry>
     <title>2021-11-8 日常杂记</title>
-    <link href="https://cuukenn.github.io/2022/07/23/daily-note/daily-learn.2021-11-08/"/>
-    <id>https://cuukenn.github.io/2022/07/23/daily-note/daily-learn.2021-11-08/</id>
+    <link href="https://cuukenn.github.io/posts/350c04fc.html"/>
+    <id>https://cuukenn.github.io/posts/350c04fc.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.807Z</updated>
+    <updated>2022-07-23T12:21:39.722Z</updated>
     
     <content type="html"><![CDATA[<ul><li>JSR-269：java annotation(javax.annotation.processing.Processor,base on SPI)</li></ul>]]></content>
     
@@ -169,10 +169,10 @@
   
   <entry>
     <title>2021-10-29 日常杂记</title>
-    <link href="https://cuukenn.github.io/2022/07/23/daily-note/daily-learn.2021-10-29/"/>
-    <id>https://cuukenn.github.io/2022/07/23/daily-note/daily-learn.2021-10-29/</id>
+    <link href="https://cuukenn.github.io/posts/ee2ed89c.html"/>
+    <id>https://cuukenn.github.io/posts/ee2ed89c.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.807Z</updated>
+    <updated>2022-07-23T12:21:39.721Z</updated>
     
     <content type="html"><![CDATA[<ul><li><p>DDD Repository变更追踪</p><ul><li>snapshot：缓存快照、然后反射diff(实现简单、反射调用、性能一般、典型框架：Hibernate)</li><li>proxy：代码编织、set增强记录状态变更(实现复杂、对象复杂容易BUG，典型框架：Entity Framework)</li></ul></li></ul><span id="more"></span> <ul><li><p>DDD分层</p><ul><li>XXXDTO -&gt;  Data Assembler转化  -&gt; Entity -&gt;  Data Converter转化  -&gt; XXXDO</li><li>转化方式：可以使用mapstruct快速进行类型转化</li><li>避免上层过度依赖底层实现</li><li>XXXDTO可再进行细分、减去不必要请求响应数据</li><li>XXXEntity可以将多个DO层库表合并到一个中进行宽表处理</li></ul></li><li><p>DDD Repository</p><ul><li>术语上将是：软件与固件&#x2F;硬件 实现分离、避免依赖传递</li><li>软件设计中、就是业务逻辑与数据持久化操作&#x2F;数据保存方式(DB等)进行隔离</li></ul></li><li><p>DP：领域模型中的值对象</p><ul><li><p>Domain Primitive</p></li><li><p>无状态：有状态的需将有状态的单独抽离</p></li><li><p>在运行时避免参数传递错误导致的特殊BUG</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法定义</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">transfer</span><span class="params">(String name,String age)</span>;</span><br><span class="line"><span class="comment">//错误调用</span></span><br><span class="line">xxx.transfer(<span class="string">&#x27;12&#x27;</span>,<span class="string">&#x27;小明&#x27;</span>);</span><br></pre></td></tr></table></figure></li><li><p>内部包含实体属性和无状态方法、部分业务逻辑与实体进行耦合</p><ul><li><p>例如：将随处可见的校验规则耦合进类型的创建之中</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PhoneNumber</span>&#123;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> String phoneNumber</span><br><span class="line"><span class="keyword">public</span> <span class="title function_">PhoneNumber</span><span class="params">(String phoneNumber)</span>&#123;</span><br><span class="line">  <span class="comment">//进行手机号check</span></span><br><span class="line">  <span class="comment">//属性初始化</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">getType</span><span class="params">()</span>&#123;</span><br><span class="line"><span class="comment">//经过计算获取手机号区号</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> xxx xxx</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">XXXEntity</span>&#123;</span><br><span class="line"><span class="keyword">private</span> PhoneNumber phone;</span><br><span class="line"><span class="keyword">private</span> XXX         xxx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul></li></ul></li></ul>]]></content>
     
@@ -197,10 +197,10 @@
   
   <entry>
     <title>H2内存库MVStore引擎*.mv.db文件过大的解决办法</title>
-    <link href="https://cuukenn.github.io/2022/07/23/bugfix/H2%E5%86%85%E5%AD%98%E5%BA%93MVStore%E5%BC%95%E6%93%8E.mv.db%E6%96%87%E4%BB%B6%E8%BF%87%E5%A4%A7%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
-    <id>https://cuukenn.github.io/2022/07/23/bugfix/H2%E5%86%85%E5%AD%98%E5%BA%93MVStore%E5%BC%95%E6%93%8E.mv.db%E6%96%87%E4%BB%B6%E8%BF%87%E5%A4%A7%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</id>
+    <link href="https://cuukenn.github.io/posts/b04ad35d.html"/>
+    <id>https://cuukenn.github.io/posts/b04ad35d.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.802Z</updated>
+    <updated>2022-07-23T12:21:39.717Z</updated>
     
     <content type="html"><![CDATA[<ul><li><p>原因(仅个人观点)</p></li><li><p>h2的chunk机制：每次commit新建一个chunk存储块，</p><p>参考：<a href="https://blog.csdn.net/kaixin89/article/details/50738486" title="H2的存储子系统——MvStore_HappySkaikai的博客-CSDN博客">H2的存储子系统——MvStore_HappySkaikai的博客-CSDN博客</a></p><p>查看*.mv.db文件相关信息</p><ul><li><code>MVStoreTool.main(&quot;-info&quot;,&quot;xxx.mv.db.bak&quot;)</code></li></ul></li><li><p>程序异常停止，导致h2的<code>shutdown compact</code>或者<code>shutdown defrag</code>未完成(如：<code>KILL -9 PID</code>)</p></li><li><p>长时间运行、但无定时清理任务</p></li><li><p>代码嵌套事务处于递归函数中</p></li><li><p>解决方案</p><ul><li><p>1，升级jar包，VERSION&gt;&#x3D;1.4.200(不一定有用)：</p><ul><li><p>VERSION&#x3D;1.4.200</p><p>增加配置’AUTO_COMPACT_FILL_RATE’,默认值为90 自定义配置项：<code>jdbc:h2:tcp://localhost/./dbname;MAX_COMPACT_COUNT=70</code></p><p>仅对”Chunk fill rate“值小的情况有效、多次COMMIT导致的”Chunk fill rate“值大无法处理</p></li></ul></li><li><p>2、查看代码、移除递归中的嵌套事务(不一定有用)：</p></li><li><p>3、如果使用到了JPA+HIBERNATE+MapStruct（本人测试有效）</p><ul><li><p>hibernate-5.2.8.Final</p><p>db文件正常</p></li><li><p>hibernate版本&gt;5.2.8.Final（本人只测试5.4.27.Final）</p><p>大量事务后进行sync，mv.db文件很大</p><p>在不回退hibernate版本的情况下、可先定位到哪部分的事务导致的、然后修改对应位置的model到entry的转化逻辑、由MapStruct中对级联对象的new操作改成将外键查询数据库后的实体直接set进去</p></li></ul></li></ul></li><li><p>查看当前内存数据库对应配置项的值</p><ul><li><p>VERSION&#x3D;1.4.200</p><p><code>SELECT * FROM INFORMATION_SCHEMA.SETTINGS WHERE NAME=&#39;MAX_COMPACT_COUNT&#39;</code></p></li></ul></li><li><p>更多信息、请查看以下类的方法或属性(搜索关键词：autoCompactFillRate)</p><ul><li><p>1.org.h2.mvstore.MVStore#writeInBackground</p></li><li><p>2.org.h2.mvstore.db.Store#Store</p></li><li><p>3.org.h2.mvstore.MVStore#MVStore</p></li><li><p>4.org.h2.engine.DbSettings#autoCompactFillRate</p><p>参考：<a href="https://github.com/h2database/h2database/pull/2262" title="add setting AUTO_COMPACT_FILL_RATE by auntyellow · Pull Request #2262 · h2database/h2database · GitHub">add setting AUTO_COMPACT_FILL_RATE by auntyellow · Pull Request #2262 · h2database&#x2F;h2database · GitHub</a></p></li></ul></li></ul>]]></content>
     
@@ -220,10 +220,10 @@
   
   <entry>
     <title>deepin安装mysql的密码问题,修改了mysql密码也无法登录</title>
-    <link href="https://cuukenn.github.io/2022/07/23/bugfix/deepin%E5%AE%89%E8%A3%85mysql%E7%9A%84%E5%AF%86%E7%A0%81%E9%97%AE%E9%A2%98,%E4%BF%AE%E6%94%B9%E4%BA%86mysql%E5%AF%86%E7%A0%81%E4%B9%9F%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95/"/>
-    <id>https://cuukenn.github.io/2022/07/23/bugfix/deepin%E5%AE%89%E8%A3%85mysql%E7%9A%84%E5%AF%86%E7%A0%81%E9%97%AE%E9%A2%98,%E4%BF%AE%E6%94%B9%E4%BA%86mysql%E5%AF%86%E7%A0%81%E4%B9%9F%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95/</id>
+    <link href="https://cuukenn.github.io/posts/968058fb.html"/>
+    <id>https://cuukenn.github.io/posts/968058fb.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.803Z</updated>
+    <updated>2022-07-23T12:21:39.717Z</updated>
     
     <content type="html"><![CDATA[<p>每次安装mysql都会出现这个问题,真的挺无语的,上次是centos7,它在安装的时候会自动生成一个密码,在log日志里</p><p>查看命令大概是这样的:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /var/log/mysql/mysql.log | grep <span class="string">&quot;password&quot;</span>;</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p>这次我要说的是deepin下的Mysql密码初始化,修改问题</p><p>问题描述:</p><p>执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get mysql-server  mysql-client</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p>后按网上的说法是会出现设置mysql root账户密码的弹框,但实际上并不出现</p><p>它会创建一个特殊用户,如下</p><p><img src="https://img-blog.csdn.net/20180922144716963?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzU5MDkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p>此时mysql -uroot -p无法登录</p><p>可以使用</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql <span class="operator">-</span>uroot <span class="operator">-</span>p </span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p>无密码登录</p><p>登录完成后使用改密码命令,例如:(新版本password字段改成了authentication_string)</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> authentication_string<span class="operator">=</span>password(&quot;密码&quot;) ;</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p>或</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> setset authentication_string<span class="operator">=</span>password(&quot;密码&quot;) <span class="keyword">where</span> <span class="keyword">user</span><span class="operator">=</span>&quot;用户名&quot;;</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p>然后如果发现重新退出登录还是无效可以看看下面的命令输出的plugin是不是和我的一样</p><p>输入如下命令可以看到</p><p><img src="https://img-blog.csdn.net/20180922144923412?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzU5MDkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动">编辑</p><p>一样就只需要将plugin改为下面几个用户的就行,命令如下</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> plugin<span class="operator">=</span>&quot;mysql_native_password&quot; <span class="keyword">where</span> <span class="keyword">user</span><span class="operator">=</span>&quot;用户名&quot;;</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p>然后在正常执行改密码方法后重新登录就可以了</p><p>结果大概如下(password_expired要为N才能使用对应账户)</p><p><img src="https://img-blog.csdn.net/20180922145654972?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzU5MDkx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动">编辑</p>]]></content>
     
@@ -242,56 +242,11 @@
   </entry>
   
   <entry>
-    <title>hibernate普通字段懒加载集合关联无法保存的解决方法，及hibernate字节增强插件的使用</title>
-    <link href="https://cuukenn.github.io/2022/07/23/bugfix/hibernate%E6%99%AE%E9%80%9A%E5%AD%97%E6%AE%B5%E6%87%92%E5%8A%A0%E8%BD%BD%E9%9B%86%E5%90%88%E5%85%B3%E8%81%94%E6%97%A0%E6%B3%95%E5%8F%8Ahibernate%E5%AD%97%E8%8A%82%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://cuukenn.github.io/2022/07/23/bugfix/hibernate%E6%99%AE%E9%80%9A%E5%AD%97%E6%AE%B5%E6%87%92%E5%8A%A0%E8%BD%BD%E9%9B%86%E5%90%88%E5%85%B3%E8%81%94%E6%97%A0%E6%B3%95%E5%8F%8Ahibernate%E5%AD%97%E8%8A%82%E5%A2%9E%E5%BC%BA%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
-    <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.804Z</updated>
-    
-    <content type="html"><![CDATA[<p>首先请查看<a href="https://blog.csdn.net/windsigirl123/article/details/60957632" title="Hibernate 5 &amp; JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客">Hibernate 5 &amp; JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客</a>，通过模仿这篇文章确实可以产生效果，但是出现ManyToMany的集合关联时，即存在集合关联懒加载时，不能单纯的模仿博文提到的普通字段的修改方式。</p><h3 id="该情况下会产生两个问题："><a href="#该情况下会产生两个问题：" class="headerlink" title="该情况下会产生两个问题："></a>该情况下会产生两个问题：</h3><p>1.多对多懒加载关联无法保存数据，其他集合懒加载关联类似</p><span id="more"></span><p>2.如果编写代码失误会导致懒加载的字段无法序列化，即便使用了Hibernate5Module(该情况在使用hibernate字节增强插件时尤其明显，下面讲)。</p><h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>使用hibernate-enhance-maven-plugin字节增强插件，该插件会在编译时会修改实体到目标值，可以查看反序列化后的效果。</p><h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><p>maven:</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate.orm.tooling<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-enhance-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.3.5.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">failOnError</span>&gt;</span>true<span class="tag">&lt;/<span class="name">failOnError</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">enableLazyInitialization</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enableLazyInitialization</span>&gt;</span>//必须要</span><br><span class="line">              <span class="tag">&lt;<span class="name">enableDirtyTracking</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enableDirtyTracking</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">enableAssociationManagement</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enableAssociationManagement</span>&gt;</span>//存在懒加载集合关联需要加上这个配置</span><br><span class="line">       <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">goal</span>&gt;</span>enhance<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure><p>然后运行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn install -Dmaven.test.skip=<span class="literal">true</span></span><br></pre></td></tr></table></figure><p>可反编译编译的class文件进行查看确认。</p><p>问题：</p><p>使用字节增强会导致序列化问题，如果有更好的方法可以分享下。</p><p>我几番尝试，无奈，只能将反汇编的替换掉原来的类，再在需要懒加载字段的get方法中加上了判断session是否有效的语句，如下：</p><p>(注:this.$$_hibernate_getInterceptor())是使用字节增强会在class文件中加上去的)</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if (this.$$_hibernate_getInterceptor() instanceof LazyAttributeLoadingInterceptor</span><br><span class="line">  &amp;&amp;</span><br><span class="line">  (</span><br><span class="line">    ((LazyAttributeLoadingInterceptor) this.$$_hibernate_getInterceptor()).getLinkedSession() == null)</span><br><span class="line">  || ((LazyAttributeLoadingInterceptor) this.$$_hibernate_getInterceptor()).getLinkedSession().isClosed()</span><br><span class="line">) &#123;</span><br><span class="line">  return this.filed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;首先请查看&lt;a href=&quot;https://blog.csdn.net/windsigirl123/article/details/60957632&quot; title=&quot;Hibernate 5 &amp;amp; JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客&quot;&gt;Hibernate 5 &amp;amp; JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客&lt;/a&gt;，通过模仿这篇文章确实可以产生效果，但是出现ManyToMany的集合关联时，即存在集合关联懒加载时，不能单纯的模仿博文提到的普通字段的修改方式。&lt;/p&gt;
-&lt;h3 id=&quot;该情况下会产生两个问题：&quot;&gt;&lt;a href=&quot;#该情况下会产生两个问题：&quot; class=&quot;headerlink&quot; title=&quot;该情况下会产生两个问题：&quot;&gt;&lt;/a&gt;该情况下会产生两个问题：&lt;/h3&gt;&lt;p&gt;1.多对多懒加载关联无法保存数据，其他集合懒加载关联类似&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
-    
-    
-    <category term="bugfix" scheme="https://cuukenn.github.io/tags/bugfix/"/>
-    
-    <category term="database" scheme="https://cuukenn.github.io/tags/database/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection is established</title>
-    <link href="https://cuukenn.github.io/2022/07/23/bugfix/windows%E8%BF%90%E8%A1%8C%E6%AD%A3%E5%B8%B8%E4%BD%86%E6%98%AFlinux%E4%B8%8B%E7%A8%8B%E5%BA%8F%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0console%E6%8A%A5websocket%20is%20closed%20before%20the%20connection%20is%20established/"/>
-    <id>https://cuukenn.github.io/2022/07/23/bugfix/windows%E8%BF%90%E8%A1%8C%E6%AD%A3%E5%B8%B8%E4%BD%86%E6%98%AFlinux%E4%B8%8B%E7%A8%8B%E5%BA%8F%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0console%E6%8A%A5websocket%20is%20closed%20before%20the%20connection%20is%20established/</id>
-    <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.805Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>原因：</strong></p><ol><li>连接socket时需要通过IP获取到对应主机的域名来进行连接，此过程会相当耗时</li><li>前端有一个超时时间，导致无法在规定时间内收到服务端消息而触发超时操作</li></ol><p><strong>表现：</strong></p><ol><li>windows及linux下可不同时出现，与DNS解析的配置有关</li><li>浏览器console界面会打印大量websocket is closed 错误消息</li><li>可能伴随着刷新很慢之类的相关异常现象</li></ol><p><strong>解决方法：</strong></p><ol><li>在hosts文件中添加对应IP的反解析，如：示例IP IP ,其中IP为服务机器的内网地址，无效则自己通过堆栈在某个地方debug代码来确认</li><li>重写SocketWrapperBase类的getLocalName方法，直接返回其私有属性localAddr。此处不做赘述，存在多个类可用于重写代码，根据需要自己合理选择</li><li>修改DNS相关配置(可能还存在其他相关配置，个人没有找到方法1外的相关配置，故无法给出实际例子)</li></ol><p><strong>推荐：</strong></p><p>      卡顿的时候可以使用JDK自带工具进行分析</p><p>       获取程序进程号</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JPS</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p>       获取当前程序的堆栈</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JSTACK PID &gt; stack.log</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p><strong>前台报错</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WebSocket connection to &#x27;ws://127.0.0.1:8080/pms/websocket/181/vledvxj1/websocket&#x27; failed: WebSocket is closed before the connection is established.</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p><strong>后台报错</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java.io.IOException: Broken pipe</span><br><span class="line">    at sun.nio.ch.FileDispatcherImpl.write0(Native Method)</span><br><span class="line">    at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:47)</span><br><span class="line">    at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:93)</span><br><span class="line">    at sun.nio.ch.IOUtil.write(IOUtil.java:65)</span><br><span class="line">    at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:487)</span><br><span class="line">    at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:124)</span><br><span class="line">    at org.apache.tomcat.util.net.NioBlockingSelector.write(NioBlockingSelector.java:101)</span><br><span class="line">    at org.apache.tomcat.util.net.NioSelectorPool.write(NioSelectorPool.java:172)</span><br><span class="line">    at org.apache.coyote.http11.InternalNioOutputBuffer.writeToSocket(InternalNioOutputBuffer.java:139)</span><br><span class="line">    at org.apache.coyote.http11.InternalNioOutputBuffer.addToBB(InternalNioOutputBuffer.java:197)</span><br><span class="line">    at org.apache.coyote.http11.InternalNioOutputBuffer.access$000(InternalNioOutputBuffer.java:41)</span><br><span class="line">    at org.apache.coyote.http11.InternalNioOutputBuffer$SocketOutputBuffer.doWrite(InternalNioOutputBuffer.java:320)</span><br><span class="line">    at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:118)</span><br><span class="line">    at org.apache.coyote.http11.AbstractOutputBuffer.doWrite(AbstractOutputBuffer.java:256)</span><br><span class="line">    at org.apache.coyote.Response.doWrite(Response.java:491)</span><br><span class="line">    at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:391)</span><br><span class="line">    ... 21 more</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p><strong>调用堆栈：</strong></p><blockquote><p>   at java.net.Inet6AddressImpl.getHostByAddr(Native Method)<br>    at java.net.InetAddress$2.getHostByAddr(InetAddress.java:932)<br>    at java.net.InetAddress.getHostFromNameService(InetAddress.java:617)<br>    at java.net.InetAddress.getHostName(InetAddress.java:559)<br>    at java.net.InetAddress.getHostName(InetAddress.java:531)<br>    at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.populateLocalName(NioEndpoint.java:1304)<br>    at org.apache.tomcat.util.net.SocketWrapperBase.getLocalName(SocketWrapperBase.java:223)<br>    at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:464)<br>    at org.apache.coyote.Request.action(Request.java:432)<br>    at org.apache.catalina.connector.Request.getLocalName(Request.java:1307)<br>    at org.apache.catalina.connector.RequestFacade.getLocalName(RequestFacade.java:1002)<br>    at javax.servlet.ServletRequestWrapper.getLocalName(ServletRequestWrapper.java:336)<br>    at javax.servlet.ServletRequestWrapper.getLocalName(ServletRequestWrapper.java:336)<br>    at javax.servlet.ServletRequestWrapper.getLocalName(ServletRequestWrapper.java:336)<br>    at org.springframework.http.server.ServletServerHttpRequest.getLocalAddress(ServletServerHttpRequest.java:197)</p></blockquote><p>​</p>]]></content>
-    
-    
-    <summary type="html">windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection is established</summary>
-    
-    
-    
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
-    
-    
-    <category term="bugfix" scheme="https://cuukenn.github.io/tags/bugfix/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Docker随记</title>
-    <link href="https://cuukenn.github.io/2022/07/23/other/Docker/"/>
-    <id>https://cuukenn.github.io/2022/07/23/other/Docker/</id>
+    <link href="https://cuukenn.github.io/posts/cf5597ac.html"/>
+    <id>https://cuukenn.github.io/posts/cf5597ac.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.808Z</updated>
+    <updated>2022-07-23T12:21:39.722Z</updated>
     
     <content type="html"><![CDATA[<h6 id="ps-总是用完就把命令给忘记了，记录一下"><a href="#ps-总是用完就把命令给忘记了，记录一下" class="headerlink" title="ps(总是用完就把命令给忘记了，记录一下)"></a>ps(总是用完就把命令给忘记了，记录一下)</h6><h4 id="1-安装（略）"><a href="#1-安装（略）" class="headerlink" title="1.安装（略）"></a>1.安装（略）</h4><h4 id="2-拉取容器（略）"><a href="#2-拉取容器（略）" class="headerlink" title="2.拉取容器（略）"></a>2.拉取容器（略）</h4><h4 id="3-创建容器"><a href="#3-创建容器" class="headerlink" title="3.创建容器"></a>3.创建容器</h4><pre><code>docker run -itd -v 主机路径：容器路径 -p 主机端口：容器端口 --name 命名  tag(Images的tag)其中，-i表示保持容器标准输入一直活动如果未断开,-t代表开启一个tty,-d表示容器后台运行</code></pre><h4 id="4-重新进入容器"><a href="#4-重新进入容器" class="headerlink" title="4.重新进入容器"></a>4.重新进入容器</h4><pre><code>docker exec -itd container /bin/sh</code></pre>]]></content>
     
@@ -311,11 +266,35 @@
   </entry>
   
   <entry>
-    <title>修改服务器时间导致程序卡顿</title>
-    <link href="https://cuukenn.github.io/2022/07/23/bugfix/%E4%BF%AE%E6%94%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E9%97%B4%E5%AF%BC%E8%87%B4%E7%A8%8B%E5%BA%8F%E5%8D%A1%E9%A1%BF/"/>
-    <id>https://cuukenn.github.io/2022/07/23/bugfix/%E4%BF%AE%E6%94%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E9%97%B4%E5%AF%BC%E8%87%B4%E7%A8%8B%E5%BA%8F%E5%8D%A1%E9%A1%BF/</id>
+    <title>hibernate普通字段懒加载集合关联无法保存的解决方法，及hibernate字节增强插件的使用</title>
+    <link href="https://cuukenn.github.io/posts/ece0d388.html"/>
+    <id>https://cuukenn.github.io/posts/ece0d388.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.805Z</updated>
+    <updated>2022-07-23T12:21:39.717Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先请查看<a href="https://blog.csdn.net/windsigirl123/article/details/60957632" title="Hibernate 5 &amp; JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客">Hibernate 5 &amp; JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客</a>，通过模仿这篇文章确实可以产生效果，但是出现ManyToMany的集合关联时，即存在集合关联懒加载时，不能单纯的模仿博文提到的普通字段的修改方式。</p><h3 id="该情况下会产生两个问题："><a href="#该情况下会产生两个问题：" class="headerlink" title="该情况下会产生两个问题："></a>该情况下会产生两个问题：</h3><p>1.多对多懒加载关联无法保存数据，其他集合懒加载关联类似</p><span id="more"></span><p>2.如果编写代码失误会导致懒加载的字段无法序列化，即便使用了Hibernate5Module(该情况在使用hibernate字节增强插件时尤其明显，下面讲)。</p><h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>使用hibernate-enhance-maven-plugin字节增强插件，该插件会在编译时会修改实体到目标值，可以查看反序列化后的效果。</p><h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><p>maven:</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate.orm.tooling<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-enhance-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.3.5.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">failOnError</span>&gt;</span>true<span class="tag">&lt;/<span class="name">failOnError</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">enableLazyInitialization</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enableLazyInitialization</span>&gt;</span>//必须要</span><br><span class="line">              <span class="tag">&lt;<span class="name">enableDirtyTracking</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enableDirtyTracking</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">enableAssociationManagement</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enableAssociationManagement</span>&gt;</span>//存在懒加载集合关联需要加上这个配置</span><br><span class="line">       <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">goal</span>&gt;</span>enhance<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure><p>然后运行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn install -Dmaven.test.skip=<span class="literal">true</span></span><br></pre></td></tr></table></figure><p>可反编译编译的class文件进行查看确认。</p><p>问题：</p><p>使用字节增强会导致序列化问题，如果有更好的方法可以分享下。</p><p>我几番尝试，无奈，只能将反汇编的替换掉原来的类，再在需要懒加载字段的get方法中加上了判断session是否有效的语句，如下：</p><p>(注:this.$$_hibernate_getInterceptor())是使用字节增强会在class文件中加上去的)</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if (this.$$_hibernate_getInterceptor() instanceof LazyAttributeLoadingInterceptor</span><br><span class="line">  &amp;&amp;</span><br><span class="line">  (</span><br><span class="line">    ((LazyAttributeLoadingInterceptor) this.$$_hibernate_getInterceptor()).getLinkedSession() == null)</span><br><span class="line">  || ((LazyAttributeLoadingInterceptor) this.$$_hibernate_getInterceptor()).getLinkedSession().isClosed()</span><br><span class="line">) &#123;</span><br><span class="line">  return this.filed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;首先请查看&lt;a href=&quot;https://blog.csdn.net/windsigirl123/article/details/60957632&quot; title=&quot;Hibernate 5 &amp;amp; JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客&quot;&gt;Hibernate 5 &amp;amp; JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客&lt;/a&gt;，通过模仿这篇文章确实可以产生效果，但是出现ManyToMany的集合关联时，即存在集合关联懒加载时，不能单纯的模仿博文提到的普通字段的修改方式。&lt;/p&gt;
+&lt;h3 id=&quot;该情况下会产生两个问题：&quot;&gt;&lt;a href=&quot;#该情况下会产生两个问题：&quot; class=&quot;headerlink&quot; title=&quot;该情况下会产生两个问题：&quot;&gt;&lt;/a&gt;该情况下会产生两个问题：&lt;/h3&gt;&lt;p&gt;1.多对多懒加载关联无法保存数据，其他集合懒加载关联类似&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    
+    
+    <category term="bugfix" scheme="https://cuukenn.github.io/tags/bugfix/"/>
+    
+    <category term="database" scheme="https://cuukenn.github.io/tags/database/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>修改服务器时间导致程序卡顿</title>
+    <link href="https://cuukenn.github.io/posts/ec6f2b24.html"/>
+    <id>https://cuukenn.github.io/posts/ec6f2b24.html</id>
+    <published>2022-07-22T20:00:00.000Z</published>
+    <updated>2022-07-23T12:21:39.720Z</updated>
     
     <content type="html"><![CDATA[<p><strong>原因：</strong>SimpleTimestamper.next函数的循环无法满足退出条件</p><p><strong>表现：</strong></p><ol><li>CPU使用率飙升，可达100%</li><li>存在数据查询的界面或操作无数据展示</li></ol><p><strong>前提条件：</strong></p><ol><li>使用到了Hibernate框架</li><li>系统运行过程中调整时间。如web程序，调整时间后再调用其的获取数据的接口或刷新界面</li></ol><p><strong>复现方式：</strong></p><ol><li>将时间往前调整，如14:30-&gt;2:30,时间差越久，越不容易恢复，时间差短卡一会就好了</li></ol><p>           linux修改时间方式</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">date</span> -s <span class="string">&quot;2012-05-18 04:53:00&quot;</span></span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p>          windows修改时间方式</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time 11:00:00</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p><strong>解决方式:</strong></p><ol><li>重启</li><li>恢复被调整的时间</li></ol><p><strong>相关堆栈：</strong></p><blockquote><p> org.hibernate.cache.spi.support.SimpleTimestamper.next(SimpleTimestamper.java:38) at     org.hibernate.cache.spi.AbstractRegionFactory.nextTimestamp(AbstractRegionFactory.java:150) at      org.hibernate.cache.spi.AbstractCacheTransactionSynchronization.<init>(AbstractCacheTransactionSynchronization.java:19) at      org.hibernate.cache.spi.StandardCacheTransactionSynchronization.<init>(StandardCacheTransactionSynchronization.java:14) at       org.hibernate.cache.spi.AbstractRegionFactory.createTransactionContext(AbstractRegionFactory.java:145)</p></blockquote><p>​</p>]]></content>
     
@@ -334,32 +313,11 @@
   </entry>
   
   <entry>
-    <title>hibernate随记</title>
-    <link href="https://cuukenn.github.io/2022/07/23/other/hibernate/"/>
-    <id>https://cuukenn.github.io/2022/07/23/other/hibernate/</id>
-    <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.811Z</updated>
-    
-    <content type="html"><![CDATA[<h6 id="1-普通字段无法懒加载"><a href="#1-普通字段无法懒加载" class="headerlink" title="1.普通字段无法懒加载"></a>1.普通字段无法懒加载</h6><p>可以使用hibernate-enhance-maven-plugin字节码增强器。</p><span id="more"></span><p>注：</p><ul><li>1.自己单纯的实现PersistentAttributeInterceptable会对集合类的关联关系的懒加载产生影响，如没写好会无法保存多对多</li><li>2.使用字节码增强器后会导致json序列化失败，就算使用了Hibernate5Module也没用</li><li>3.针对这种情况，需要做特殊处理，我的方法是直接更改类，在对应set方法中使用PersistentAttributeInterceptor强转LazyAttributeLoadingInterceptor获取到- session判断session是否已经存在</li></ul><h6 id="2-hinernate缓存相关"><a href="#2-hinernate缓存相关" class="headerlink" title="2.hinernate缓存相关"></a>2.hinernate缓存相关</h6><ul><li>1SharedCacheMode，AvailableSettings为hinernate相关配置描述</li><li>2.直接开启hinernate缓存无效，包括查询缓存和二级缓存，除了开启之外，需要加上@cacheAble或指定策略javax.persistence.sharedCache.mode</li><li>3.查询缓存hibernate.cache.use_query_cache配合@QueryHint</li><li>4.集合缓存@Cache(usage &#x3D; CacheConcurrencyStrategy.NONSTRICT_READ_WRITE) ，加在实体的集合属性上</li><li>5.使用Jcache且开启二级缓存后需要配置”default-query-results-region”和”default-update-timestamps-region”,<br>  只是写在echach.xml可能无效，会报warn日志并自动创建默认缓存策略，需要添加”hibernate.javax.cache.uri”指定配置文件，<br>  详细配置见org.hibernate.cache.jcache.ConfigSettings。</li><li>详见：<a href="https://blog.csdn.net/czp11210/article/details/51996217">https://blog.csdn.net/czp11210/article/details/51996217</a><br>相关配置查看请查看SharedCacheMode.java和AvailableSettings.java</li></ul>]]></content>
-    
-    
-    <summary type="html">&lt;h6 id=&quot;1-普通字段无法懒加载&quot;&gt;&lt;a href=&quot;#1-普通字段无法懒加载&quot; class=&quot;headerlink&quot; title=&quot;1.普通字段无法懒加载&quot;&gt;&lt;/a&gt;1.普通字段无法懒加载&lt;/h6&gt;&lt;p&gt;可以使用hibernate-enhance-maven-plugin字节码增强器。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
-    
-    
-    <category term="hibernate" scheme="https://cuukenn.github.io/tags/hibernate/"/>
-    
-  </entry>
-  
-  <entry>
     <title>junit随记</title>
-    <link href="https://cuukenn.github.io/2022/07/23/other/Junit/"/>
-    <id>https://cuukenn.github.io/2022/07/23/other/Junit/</id>
+    <link href="https://cuukenn.github.io/posts/c96d5477.html"/>
+    <id>https://cuukenn.github.io/posts/c96d5477.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.809Z</updated>
+    <updated>2022-07-23T12:21:39.723Z</updated>
     
     <content type="html"><![CDATA[<h4 id="1-本次重新回顾，重新熟悉Junit的注解，了解新注解-Rule"><a href="#1-本次重新回顾，重新熟悉Junit的注解，了解新注解-Rule" class="headerlink" title="1.本次重新回顾，重新熟悉Junit的注解，了解新注解@Rule"></a>1.本次重新回顾，重新熟悉Junit的注解，了解新注解@Rule</h4><pre><code>    @Rule注解,可以通过实现TestRule来对方法做切面，在@Test方法运行前后加入自定义代码    Junit也提供了一些默认Rule,如下：      + TemporaryFolder Rule：创建一些临时目录或者文件</code></pre><span id="more"></span><pre><code>      + ExternalResource Rule：ExternalResource 是TemporaryFolder的父类，主要用于在测试之前创建资源，并在测试完成后销毁      + ErrorCollector Rule：收集多个错误，并在测试执行完后一次过显示出来      + Verifier Rule：是ErrorCollector的父类，可以在测试执行完成之后做一些校验，以验证测试结果是不是正确      + TestWatcher Rule：定义了五个触发点，分别是测试成功，测试失败，测试开始，测试完成，测试跳过，能让我们在每个触发点执行自定义的逻辑      + TestName Rule：能让我们在测试中获取目前测试方法的名字      + Timeout与ExpectedException Rule：分别用于超时测试与异常测试 特别的，SpringBoot提供了OutputCapture：用来取出测试方法执行过程的日志   我写了个自定义rule结合OutputCapture来统计查询语句数量，循环控制及总运行时间   @After,@AfterClass,@Before,@BeforeClass,@Test,@RunWith简单，只是进行回顾</code></pre><hr><h4 id="2-使用Junit进行模拟登录后的Web接口测试-更多Mock操作详见mock-md"><a href="#2-使用Junit进行模拟登录后的Web接口测试-更多Mock操作详见mock-md" class="headerlink" title="2.使用Junit进行模拟登录后的Web接口测试(更多Mock操作详见mock.md)"></a>2.使用Junit进行模拟登录后的Web接口测试(更多Mock操作详见mock.md)</h4><p>1：启动容器进行测试</p><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringJUnit4ClassRunner.class)</span></span><br><span class="line"><span class="meta">@ContextConfiguration(<span class="string">&quot;classpath:config/context.xml&quot;</span>)</span></span><br><span class="line"><span class="meta">@WebAppConfiguration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IncotermsRestServiceTest</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> WebApplicationContext wac;</span><br><span class="line">    <span class="keyword">private</span> MockMvc mockMvc;</span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="keyword">public</span> void setup() &#123;</span><br><span class="line">        <span class="keyword">this</span>.mockMvc = MockMvcBuilders.webAppContextSetup(<span class="keyword">this</span>.wac).build();   <span class="comment">//构造MockMvc</span></span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line">    (<span class="number">1</span>)<span class="meta">@WebAppConfiguration</span>：测试环境使用，用来表示测试环境使用的ApplicationContext将是WebApplicationContext类型的；value指定web应用的根；</span><br><span class="line">    (<span class="number">2</span>)通过<span class="meta">@Autowired</span> WebApplicationContext wac：注入web环境的ApplicationContext容器；</span><br><span class="line">    (<span class="number">3</span>)然后通过MockMvcBuilders.webAppContextSetup(wac).build()创建一个MockMvc进行测试；</span><br></pre></td></tr></table></figure><p>2：不启动容器模拟测试（速度快）</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PricingExportResultsRestServiceTest</span> &#123;</span><br><span class="line">    <span class="meta">@InjectMocks</span></span><br><span class="line">    <span class="keyword">private</span> PricingExportResultsRestService pricingExportResultsRestService;</span><br><span class="line">    <span class="meta">@Mock</span></span><br><span class="line">    <span class="keyword">private</span> ExportRateScheduleService exportRateScheduleService;</span><br><span class="line">    <span class="meta">@Mock</span></span><br><span class="line">    <span class="keyword">private</span> PricingUrlProvider pricingUrlProvider;</span><br><span class="line">    <span class="keyword">private</span> MockMvc mockMvc;</span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setup</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//初始化可换成@RunWith(MockitoJUnitRunner.class)，当需要使用其他Runner时使用以下的initMocks</span></span><br><span class="line">        MockitoAnnotations.initMocks(<span class="built_in">this</span>);</span><br><span class="line">        mockMvc = MockMvcBuilders.standaloneSetup(pricingExportResultsRestService).build();  <span class="comment">//构造MockMvc</span></span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">主要是两个步骤：</span><br><span class="line">(<span class="number">1</span>)首先自己创建相应的控制器，注入相应的依赖</span><br><span class="line">(<span class="number">2</span>)通过MockMvcBuilders.standaloneSetup模拟一个Mvc测试环境，通过build得到一个MockMvc</span><br></pre></td></tr></table></figure><hr><h4 id="3-使用Junit进行高并发测试"><a href="#3-使用Junit进行高并发测试" class="headerlink" title="3.使用Junit进行高并发测试"></a>3.使用Junit进行高并发测试</h4>]]></content>
     
@@ -379,36 +337,11 @@
   </entry>
   
   <entry>
-    <title>eclipse随记</title>
-    <link href="https://cuukenn.github.io/2022/07/23/other/eclipse-rcp/"/>
-    <id>https://cuukenn.github.io/2022/07/23/other/eclipse-rcp/</id>
-    <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.810Z</updated>
-    
-    <content type="html"><![CDATA[<p>eclipse rcp即eclipse的插件项目，可以创建桌面应用</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;eclipse rcp即eclipse的插件项目，可以创建桌面应用&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
-    
-    
-    <category term="daily-note" scheme="https://cuukenn.github.io/tags/daily-note/"/>
-    
-  </entry>
-  
-  <entry>
     <title>shell脚本随记</title>
-    <link href="https://cuukenn.github.io/2022/07/23/other/Shell/"/>
-    <id>https://cuukenn.github.io/2022/07/23/other/Shell/</id>
+    <link href="https://cuukenn.github.io/posts/5ab84bc0.html"/>
+    <id>https://cuukenn.github.io/posts/5ab84bc0.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.810Z</updated>
+    <updated>2022-07-23T12:21:39.723Z</updated>
     
     <content type="html"><![CDATA[<h5 id="1-脚本相关"><a href="#1-脚本相关" class="headerlink" title="1.脚本相关"></a>1.脚本相关</h5><ul><li>${a} 变量a的值, 在不引起歧义的情况下可以省略大括号。</li><li>$(cmd) 命令替换，和<code>cmd</code>效果相同，结果为shell命令cmd的输，过某些Shell版本不支持$()形式的命令替换, 如tcsh。</li><li>$((expression)) 和<code>exprexpression</code>效果相同, 计算数学表达式exp的数值, 其中exp只要符合C语言的运算规则即可, 甚至三目运算符和逻辑表达式都可以计算。</li></ul><span id="more"></span><h5 id="2-脚本特殊变量"><a href="#2-脚本特殊变量" class="headerlink" title="2.脚本特殊变量"></a>2.脚本特殊变量</h5><table><thead><tr><th align="center">变量名</th><th align="center">含义</th></tr></thead><tbody><tr><td align="center">$$</td><td align="center">Shell本身的PID（ProcessID）</td></tr><tr><td align="center">$!</td><td align="center">Shell最后运行的后台Process的PID</td></tr><tr><td align="center">$?</td><td align="center">最后运行的命令的结束代码（返回值）</td></tr><tr><td align="center">$-</td><td align="center">使用Set命令设定的Flag一览</td></tr><tr><td align="center">$*</td><td align="center">所有参数列表。如”$*”用「”」括起来的情况、以”$1 $2 … $n”的形式输出所有参数。</td></tr><tr><td align="center">$@</td><td align="center">所有参数列表。如”$@”用「”」括起来的情况、以”$1” “$2” … “$n” 的形式输出所有参数。</td></tr><tr><td align="center">$#</td><td align="center">添加到Shell的参数个数</td></tr><tr><td align="center">$0</td><td align="center">Shell本身的文件名</td></tr><tr><td align="center">$1～$n</td><td align="center">添加到Shell的各参数值。$1是第1参数、$2是第2参数……</td></tr></tbody></table><h5 id="3-变量默认值"><a href="#3-变量默认值" class="headerlink" title="3.变量默认值"></a>3.变量默认值</h5><table><thead><tr><th align="center">表达式</th><th align="center">含义</th></tr></thead><tbody><tr><td align="center">${vari:-defaultValue}</td><td align="center">当var没有定义时，此时使用defaultValue, 而vari依然为空，没有改变值</td></tr><tr><td align="center">${vari:&#x3D;defaultValue}</td><td align="center">当vari没有定义时，此时使用defaultValue, 同时vari也被赋值为defaultValue</td></tr><tr><td align="center">${vari:?value}</td><td align="center">当vari没有定义时，或者定义了值为空，将在终端报错并且退出，用于检查是否定义以及是否为空</td></tr><tr><td align="center">${vari:+value}</td><td align="center">当vari定义并且不为空，将用value替换vari的值，否则什么也不做， 与${vari:-value}相反</td></tr></tbody></table><h5 id="4-四种模式匹配替换结构"><a href="#4-四种模式匹配替换结构" class="headerlink" title="4.四种模式匹配替换结构"></a>4.四种模式匹配替换结构</h5><table><thead><tr><th align="center">模式</th><th align="center">含义</th></tr></thead><tbody><tr><td align="center">${variable%pattern}</td><td align="center">在variable中查找，看它是否一给的模式pattern结尾，如果是，就从命令行把variable中的内容去掉右边最短的匹配模式</td></tr><tr><td align="center">${variable%%pattern}</td><td align="center">在variable中查找，看它是否一给的模式pattern结尾，如果是，就从命令行把variable中的内容去掉右边最长的匹配模式</td></tr><tr><td align="center">${variable#pattern}</td><td align="center">在variable中查找，看它是否一给的模式pattern开始，如果是，就从命令行把variable中的内容去掉左边最短的匹配模式</td></tr><tr><td align="center">${variable##pattern}</td><td align="center">在variable中查找，看它是否一给的模式pattern结尾，如果是，就从命令行把variable中的内容去掉右边最长的匹配模式</td></tr><tr><td align="center">这四种模式中都不会改变variable的值，其中，只有在pattern中使用了<em>匹配符号时，%和%%，#和##才有区别。结构中的pattern支持通配符，</em>表示零个或多个任意字符，?表示仅与一个任意字符匹配，[…]表示匹配中括号里面的字符，[!…]表示不匹配中括号里面的字符。</td><td align="center"></td></tr></tbody></table><h5 id="5-字符串替换与提取"><a href="#5-字符串替换与提取" class="headerlink" title="5.字符串替换与提取"></a>5.字符串替换与提取</h5><h5 id="6-多条命令执行"><a href="#6-多条命令执行" class="headerlink" title="6.多条命令执行"></a>6.多条命令执行</h5><ul><li>单小括号，(cmd1;cmd2;cmd3) 新开一个子shell顺序执行命令cmd1,cmd2,cmd3, 各命令之间用分号隔开, 最后一个命令后可以没有分号。</li><li>单大括号，{ cmd1;cmd2;cmd3;} 在当前shell顺序执行命令cmd1,cmd2,cmd3, 各命令之间用分号隔开, 最后一个命令后必须有分号, 第一条命令和左括号之间必须用空格隔开。<br>对{}和()而言, 括号中的重定向符只影响该条命令， 而括号外的重定向符影响到括号中的所有命令。</li></ul><hr><p>更多: <a href="https://www.cnblogs.com/qlqwjy/p/8684630.html">https://www.cnblogs.com/qlqwjy/p/8684630.html</a></p>]]></content>
     
@@ -429,11 +362,78 @@
   </entry>
   
   <entry>
-    <title>linux command随记</title>
-    <link href="https://cuukenn.github.io/2022/07/23/other/linux_cmd/"/>
-    <id>https://cuukenn.github.io/2022/07/23/other/linux_cmd/</id>
+    <title>windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection is established</title>
+    <link href="https://cuukenn.github.io/posts/1b86e9b0.html"/>
+    <id>https://cuukenn.github.io/posts/1b86e9b0.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.812Z</updated>
+    <updated>2022-07-23T12:21:39.719Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>原因：</strong></p><ol><li>连接socket时需要通过IP获取到对应主机的域名来进行连接，此过程会相当耗时</li><li>前端有一个超时时间，导致无法在规定时间内收到服务端消息而触发超时操作</li></ol><p><strong>表现：</strong></p><ol><li>windows及linux下可不同时出现，与DNS解析的配置有关</li><li>浏览器console界面会打印大量websocket is closed 错误消息</li><li>可能伴随着刷新很慢之类的相关异常现象</li></ol><p><strong>解决方法：</strong></p><ol><li>在hosts文件中添加对应IP的反解析，如：示例IP IP ,其中IP为服务机器的内网地址，无效则自己通过堆栈在某个地方debug代码来确认</li><li>重写SocketWrapperBase类的getLocalName方法，直接返回其私有属性localAddr。此处不做赘述，存在多个类可用于重写代码，根据需要自己合理选择</li><li>修改DNS相关配置(可能还存在其他相关配置，个人没有找到方法1外的相关配置，故无法给出实际例子)</li></ol><p><strong>推荐：</strong></p><p>      卡顿的时候可以使用JDK自带工具进行分析</p><p>       获取程序进程号</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JPS</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p>       获取当前程序的堆栈</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JSTACK PID &gt; stack.log</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p><strong>前台报错</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WebSocket connection to &#x27;ws://127.0.0.1:8080/pms/websocket/181/vledvxj1/websocket&#x27; failed: WebSocket is closed before the connection is established.</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p><strong>后台报错</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java.io.IOException: Broken pipe</span><br><span class="line">    at sun.nio.ch.FileDispatcherImpl.write0(Native Method)</span><br><span class="line">    at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:47)</span><br><span class="line">    at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:93)</span><br><span class="line">    at sun.nio.ch.IOUtil.write(IOUtil.java:65)</span><br><span class="line">    at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:487)</span><br><span class="line">    at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:124)</span><br><span class="line">    at org.apache.tomcat.util.net.NioBlockingSelector.write(NioBlockingSelector.java:101)</span><br><span class="line">    at org.apache.tomcat.util.net.NioSelectorPool.write(NioSelectorPool.java:172)</span><br><span class="line">    at org.apache.coyote.http11.InternalNioOutputBuffer.writeToSocket(InternalNioOutputBuffer.java:139)</span><br><span class="line">    at org.apache.coyote.http11.InternalNioOutputBuffer.addToBB(InternalNioOutputBuffer.java:197)</span><br><span class="line">    at org.apache.coyote.http11.InternalNioOutputBuffer.access$000(InternalNioOutputBuffer.java:41)</span><br><span class="line">    at org.apache.coyote.http11.InternalNioOutputBuffer$SocketOutputBuffer.doWrite(InternalNioOutputBuffer.java:320)</span><br><span class="line">    at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:118)</span><br><span class="line">    at org.apache.coyote.http11.AbstractOutputBuffer.doWrite(AbstractOutputBuffer.java:256)</span><br><span class="line">    at org.apache.coyote.Response.doWrite(Response.java:491)</span><br><span class="line">    at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:391)</span><br><span class="line">    ... 21 more</span><br></pre></td></tr></table></figure><p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p><p><strong>调用堆栈：</strong></p><blockquote><p>   at java.net.Inet6AddressImpl.getHostByAddr(Native Method)<br>    at java.net.InetAddress$2.getHostByAddr(InetAddress.java:932)<br>    at java.net.InetAddress.getHostFromNameService(InetAddress.java:617)<br>    at java.net.InetAddress.getHostName(InetAddress.java:559)<br>    at java.net.InetAddress.getHostName(InetAddress.java:531)<br>    at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.populateLocalName(NioEndpoint.java:1304)<br>    at org.apache.tomcat.util.net.SocketWrapperBase.getLocalName(SocketWrapperBase.java:223)<br>    at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:464)<br>    at org.apache.coyote.Request.action(Request.java:432)<br>    at org.apache.catalina.connector.Request.getLocalName(Request.java:1307)<br>    at org.apache.catalina.connector.RequestFacade.getLocalName(RequestFacade.java:1002)<br>    at javax.servlet.ServletRequestWrapper.getLocalName(ServletRequestWrapper.java:336)<br>    at javax.servlet.ServletRequestWrapper.getLocalName(ServletRequestWrapper.java:336)<br>    at javax.servlet.ServletRequestWrapper.getLocalName(ServletRequestWrapper.java:336)<br>    at org.springframework.http.server.ServletServerHttpRequest.getLocalAddress(ServletServerHttpRequest.java:197)</p></blockquote><p>​</p>]]></content>
+    
+    
+    <summary type="html">windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection is established</summary>
+    
+    
+    
+    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    
+    
+    <category term="bugfix" scheme="https://cuukenn.github.io/tags/bugfix/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>eclipse随记</title>
+    <link href="https://cuukenn.github.io/posts/7c79fcf3.html"/>
+    <id>https://cuukenn.github.io/posts/7c79fcf3.html</id>
+    <published>2022-07-22T20:00:00.000Z</published>
+    <updated>2022-07-23T12:21:39.724Z</updated>
+    
+    <content type="html"><![CDATA[<p>eclipse rcp即eclipse的插件项目，可以创建桌面应用</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;eclipse rcp即eclipse的插件项目，可以创建桌面应用&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    
+    
+    <category term="daily-note" scheme="https://cuukenn.github.io/tags/daily-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hibernate随记</title>
+    <link href="https://cuukenn.github.io/posts/368e48bc.html"/>
+    <id>https://cuukenn.github.io/posts/368e48bc.html</id>
+    <published>2022-07-22T20:00:00.000Z</published>
+    <updated>2022-07-23T12:21:39.724Z</updated>
+    
+    <content type="html"><![CDATA[<h6 id="1-普通字段无法懒加载"><a href="#1-普通字段无法懒加载" class="headerlink" title="1.普通字段无法懒加载"></a>1.普通字段无法懒加载</h6><p>可以使用hibernate-enhance-maven-plugin字节码增强器。</p><span id="more"></span><p>注：</p><ul><li>1.自己单纯的实现PersistentAttributeInterceptable会对集合类的关联关系的懒加载产生影响，如没写好会无法保存多对多</li><li>2.使用字节码增强器后会导致json序列化失败，就算使用了Hibernate5Module也没用</li><li>3.针对这种情况，需要做特殊处理，我的方法是直接更改类，在对应set方法中使用PersistentAttributeInterceptor强转LazyAttributeLoadingInterceptor获取到- session判断session是否已经存在</li></ul><h6 id="2-hinernate缓存相关"><a href="#2-hinernate缓存相关" class="headerlink" title="2.hinernate缓存相关"></a>2.hinernate缓存相关</h6><ul><li>1SharedCacheMode，AvailableSettings为hinernate相关配置描述</li><li>2.直接开启hinernate缓存无效，包括查询缓存和二级缓存，除了开启之外，需要加上@cacheAble或指定策略javax.persistence.sharedCache.mode</li><li>3.查询缓存hibernate.cache.use_query_cache配合@QueryHint</li><li>4.集合缓存@Cache(usage &#x3D; CacheConcurrencyStrategy.NONSTRICT_READ_WRITE) ，加在实体的集合属性上</li><li>5.使用Jcache且开启二级缓存后需要配置”default-query-results-region”和”default-update-timestamps-region”,<br>  只是写在echach.xml可能无效，会报warn日志并自动创建默认缓存策略，需要添加”hibernate.javax.cache.uri”指定配置文件，<br>  详细配置见org.hibernate.cache.jcache.ConfigSettings。</li><li>详见：<a href="https://blog.csdn.net/czp11210/article/details/51996217">https://blog.csdn.net/czp11210/article/details/51996217</a><br>相关配置查看请查看SharedCacheMode.java和AvailableSettings.java</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h6 id=&quot;1-普通字段无法懒加载&quot;&gt;&lt;a href=&quot;#1-普通字段无法懒加载&quot; class=&quot;headerlink&quot; title=&quot;1.普通字段无法懒加载&quot;&gt;&lt;/a&gt;1.普通字段无法懒加载&lt;/h6&gt;&lt;p&gt;可以使用hibernate-enhance-maven-plugin字节码增强器。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    
+    
+    <category term="hibernate" scheme="https://cuukenn.github.io/tags/hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux command随记</title>
+    <link href="https://cuukenn.github.io/posts/393f1206.html"/>
+    <id>https://cuukenn.github.io/posts/393f1206.html</id>
+    <published>2022-07-22T20:00:00.000Z</published>
+    <updated>2022-07-23T12:21:39.725Z</updated>
     
     <content type="html"><![CDATA[<p>awk<br>sed<br>uniq<br>wc<br>sort<br>head&#x2F;tail</p>]]></content>
     
@@ -457,10 +457,10 @@
   
   <entry>
     <title>junit mock随记</title>
-    <link href="https://cuukenn.github.io/2022/07/23/other/junit-mock/"/>
-    <id>https://cuukenn.github.io/2022/07/23/other/junit-mock/</id>
+    <link href="https://cuukenn.github.io/posts/48a7290d.html"/>
+    <id>https://cuukenn.github.io/posts/48a7290d.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.811Z</updated>
+    <updated>2022-07-23T12:21:39.724Z</updated>
     
     <content type="html"><![CDATA[<h4 id="优势："><a href="#优势：" class="headerlink" title="优势："></a>优势：</h4><p>可以创建一个代理类来代替实际类，并注入到待测试类，可以根据需要设定返回值</p><h4 id="相关注解："><a href="#相关注解：" class="headerlink" title="相关注解："></a>相关注解：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mock</span>:用于创建一个代理的类，默认不调用实际方法，返回<span class="literal">null</span>,可通过Mockito来定义调用函数后的返回值等</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Spy:用于创建一个代理的类，默认调用类的真实方法，可通过Mockito来定义重新定义返回值，而不执行原函数逻辑</span><br></pre></td></tr></table></figure><span id="more"></span><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@InjectMocks：用于将上述@Mock或@Spy创建的类注入到@InjectMocks标注的对象，按照类型匹配，当存在多个类型时，按照属性名匹配(实际上需要调用属性对应set方法注入#待考证，注入失败不会抛错，在这种情况可以考虑反射)</span><br></pre></td></tr></table></figure><h4 id="相关常用类："><a href="#相关常用类：" class="headerlink" title="相关常用类："></a>相关常用类：</h4><h5 id="ArgumentMatchers："><a href="#ArgumentMatchers：" class="headerlink" title="ArgumentMatchers："></a>ArgumentMatchers：</h5><p>​用于创建某个Mock类的方法捕获器并返回特定值，</p><p>​如@Mock创建的代理,此示例为mockObject执行 excuteSomeMethod创建一个固定的调用返回值”objectReturn”</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mockito.when(mockObject</span><br><span class="line">    .excuteSomeMethod(ArgumentMatchers.anyString()))</span><br><span class="line">    .thenReturn(objectReturn)</span><br></pre></td></tr></table></figure><h5 id="Mockito"><a href="#Mockito" class="headerlink" title="Mockito:"></a>Mockito:</h5><table><thead><tr><th>方法名</th><th>描述</th></tr></thead><tbody><tr><td>Mockito.mock(classToMock)</td><td>模拟对象</td></tr><tr><td>Mockito.verify(mock)</td><td>验证行为是否发生</td></tr><tr><td>Mockito.when(methodCall).thenReturn(value1).thenReturn(value2)</td><td>触发时第一次返回value1，第n次都返回value2</td></tr><tr><td>Mockito.doThrow(toBeThrown).when(mock).[method]</td><td>模拟抛出异常。</td></tr><tr><td>Mockito.mock(classToMock,defaultAnswer)</td><td>使用默认Answer模拟对象</td></tr><tr><td>Mockito.when(methodCall).thenReturn(value)</td><td>参数匹配</td></tr><tr><td>Mockito.doReturn(toBeReturned).when(mock).[method]</td><td>参数匹配（直接执行不判断）</td></tr><tr><td>Mockito.when(methodCall).thenAnswer(answer))</td><td>预期回调接口生成期望值</td></tr><tr><td>Mockito.doAnswer(answer).when(methodCall).[method]</td><td>预期回调接口生成期望值（直接执行不判断）</td></tr><tr><td>Mockito.spy(Object)</td><td>用spy监控真实对象,设置真实对象行为</td></tr><tr><td>Mockito.doNothing().when(mock).[method]</td><td>不做任何返回</td></tr><tr><td>Mockito.doCallRealMethod().when(mock).[method] &#x2F;&#x2F;等价于Mockito.when(mock.[method]).thenCallRealMethod();</td><td>调用真实的方法</td></tr><tr><td>reset(mock)</td><td>重置mock</td></tr></tbody></table><h4 id="特殊处理："><a href="#特殊处理：" class="headerlink" title="特殊处理："></a>特殊处理：</h4><p>1，返回值为空时：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Mockito.doAnswer((InvocationOnMock invocation) -&gt; &#123;</span><br><span class="line">  Object[] args = invocation.getArguments();</span><br><span class="line"> //doSomething</span><br><span class="line">  return null;</span><br><span class="line">&#125;).when(mockObjct).excuteSomeMethod(ArgumentMatchers.anyString(), ArgumentMatchers.any());</span><br><span class="line">通过以上处理可以捕获返回值为void的mockObjct代理函数，并获取到其参数列表</span><br></pre></td></tr></table></figure><h5 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h5><p>​可查看他人blog:<a href="https://blog.csdn.net/u012894692/article/details/82599100">https://blog.csdn.net/u012894692/article/details/82599100</a></p>]]></content>
     
@@ -480,21 +480,19 @@
   </entry>
   
   <entry>
-    <title>随便写写随记</title>
-    <link href="https://cuukenn.github.io/2022/07/23/other/website/"/>
-    <id>https://cuukenn.github.io/2022/07/23/other/website/</id>
+    <title>liquibase随记</title>
+    <link href="https://cuukenn.github.io/posts/2409a02f.html"/>
+    <id>https://cuukenn.github.io/posts/2409a02f.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
-    <updated>2022-07-22T09:31:17.812Z</updated>
+    <updated>2022-07-23T12:21:39.725Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>用于加解密字符串，如被混淆的css,js等：<a href="http://xssor.io/">http://xssor.io/</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>AbstractSqlStatement：修改表结构的抽象类，存在很多相关子类。</p><p> Database database &#x3D; DatabaseFactory.getInstance().findCorrectDatabaseImplementation(jdbcConnection);<br> AddColumnStatement statement &#x3D; new AddColumnStatement();<br> ExecutorService.getInstance().getExecutor(database).execute(statement);</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;用于加解密字符串，如被混淆的css,js等：&lt;a href=&quot;http://xssor.io/&quot;&gt;http://xssor.io/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</summary>
+    <summary type="html">&lt;p&gt;AbstractSqlStatement：修改表结构的抽象类，存在很多相关子类。&lt;/p&gt;
+&lt;p&gt; Database database &amp;#x3D; DatabaseFactory.getInstance().findCorrectDatabaseImplementation</summary>
       
     
     
@@ -502,7 +500,9 @@
     <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
     
     
-    <category term="daily-note" scheme="https://cuukenn.github.io/tags/daily-note/"/>
+    <category term="liquibase" scheme="https://cuukenn.github.io/tags/liquibase/"/>
+    
+    <category term="java" scheme="https://cuukenn.github.io/tags/java/"/>
     
   </entry>
   

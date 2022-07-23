@@ -173,13 +173,13 @@
 </div>
   <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/cuukenn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;cuukenn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/cuukenn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;cuukenn" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://gitee.com/cuukenn" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;cuukenn" rel="noopener" target="_blank"><i class="fab fa-gitee fa-fw"></i>Gitee</a>
+        <a href="https://gitee.com/cuukenn" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;cuukenn" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-gitee fa-fw"></i>Gitee</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://blog.csdn.net/qq_36759091?type=blog" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_36759091?type&#x3D;blog" rel="noopener" target="_blank"><i class="fab fa-csdn fa-fw"></i>CSDN</a>
+        <a href="https://blog.csdn.net/qq_36759091?type=blog" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_36759091?type&#x3D;blog" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-csdn fa-fw"></i>CSDN</a>
       </span>
       <span class="links-of-author-item">
         <a href="/891842749@qq.com" title="E-Mail → 891842749@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
@@ -218,7 +218,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/2022/07/23/bugfix/windows%E8%BF%90%E8%A1%8C%E6%AD%A3%E5%B8%B8%E4%BD%86%E6%98%AFlinux%E4%B8%8B%E7%A8%8B%E5%BA%8F%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0console%E6%8A%A5websocket%20is%20closed%20before%20the%20connection%20is%20established/">
+    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/posts/ece0d388.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -236,7 +236,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/23/bugfix/windows%E8%BF%90%E8%A1%8C%E6%AD%A3%E5%B8%B8%E4%BD%86%E6%98%AFlinux%E4%B8%8B%E7%A8%8B%E5%BA%8F%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0console%E6%8A%A5websocket%20is%20closed%20before%20the%20connection%20is%20established/" class="post-title-link" itemprop="url">windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection is established</a>
+          <a href="/posts/ece0d388.html" class="post-title-link" itemprop="url">hibernate普通字段懒加载集合关联无法保存的解决方法，及hibernate字节增强插件的使用</a>
         </h2>
 
         <div class="post-meta-container">
@@ -246,9 +246,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-07-22 12:00:00 / 修改时间：01:31:17" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+      <time title="创建时间：2022-07-22 12:00:00" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-07-23 04:21:39" itemprop="dateModified" datetime="2022-07-23T04:21:39-08:00">2022-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -270,10 +276,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection is established</p>
+          <p>首先请查看<a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/windsigirl123/article/details/60957632" title="Hibernate 5 &amp; JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客">Hibernate 5 &amp; JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客</a>，通过模仿这篇文章确实可以产生效果，但是出现ManyToMany的集合关联时，即存在集合关联懒加载时，不能单纯的模仿博文提到的普通字段的修改方式。</p>
+<h3 id="该情况下会产生两个问题："><a href="#该情况下会产生两个问题：" class="headerlink" title="该情况下会产生两个问题："></a>该情况下会产生两个问题：</h3><p>1.多对多懒加载关联无法保存数据，其他集合懒加载关联类似</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/07/23/bugfix/windows%E8%BF%90%E8%A1%8C%E6%AD%A3%E5%B8%B8%E4%BD%86%E6%98%AFlinux%E4%B8%8B%E7%A8%8B%E5%BA%8F%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0console%E6%8A%A5websocket%20is%20closed%20before%20the%20connection%20is%20established/">
+              <a class="btn" href="/posts/ece0d388.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -304,7 +311,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/2022/07/23/other/Docker/">
+    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/posts/ec6f2b24.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -322,7 +329,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/23/other/Docker/" class="post-title-link" itemprop="url">Docker随记</a>
+          <a href="/posts/ec6f2b24.html" class="post-title-link" itemprop="url">修改服务器时间导致程序卡顿</a>
         </h2>
 
         <div class="post-meta-container">
@@ -332,92 +339,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-07-22 12:00:00 / 修改时间：01:31:17" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+      <time title="创建时间：2022-07-22 12:00:00" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
+        <i class="far fa-calendar-check"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h6 id="ps-总是用完就把命令给忘记了，记录一下"><a href="#ps-总是用完就把命令给忘记了，记录一下" class="headerlink" title="ps(总是用完就把命令给忘记了，记录一下)"></a>ps(总是用完就把命令给忘记了，记录一下)</h6><h4 id="1-安装（略）"><a href="#1-安装（略）" class="headerlink" title="1.安装（略）"></a>1.安装（略）</h4><h4 id="2-拉取容器（略）"><a href="#2-拉取容器（略）" class="headerlink" title="2.拉取容器（略）"></a>2.拉取容器（略）</h4><h4 id="3-创建容器"><a href="#3-创建容器" class="headerlink" title="3.创建容器"></a>3.创建容器</h4><pre><code>docker run -itd -v 主机路径：容器路径 -p 主机端口：容器端口 --name 命名  tag(Images的tag)
-其中，-i表示保持容器标准输入一直活动如果未断开,-t代表开启一个tty,-d表示容器后台运行
-</code></pre>
-<h4 id="4-重新进入容器"><a href="#4-重新进入容器" class="headerlink" title="4.重新进入容器"></a>4.重新进入容器</h4><pre><code>docker exec -itd container /bin/sh
-</code></pre>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/2022/07/23/bugfix/%E4%BF%AE%E6%94%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E9%97%B4%E5%AF%BC%E8%87%B4%E7%A8%8B%E5%BA%8F%E5%8D%A1%E9%A1%BF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="changgg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cuukenn的博客">
-      <meta itemprop="description" content="山止川行，风禾尽起">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | cuukenn的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/23/bugfix/%E4%BF%AE%E6%94%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E9%97%B4%E5%AF%BC%E8%87%B4%E7%A8%8B%E5%BA%8F%E5%8D%A1%E9%A1%BF/" class="post-title-link" itemprop="url">修改服务器时间导致程序卡顿</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-07-22 12:00:00 / 修改时间：01:31:17" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-07-23 04:21:39" itemprop="dateModified" datetime="2022-07-23T04:21:39-08:00">2022-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -442,7 +372,7 @@
           <p>修改服务器时间导致程序卡顿</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/07/23/bugfix/%E4%BF%AE%E6%94%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E9%97%B4%E5%AF%BC%E8%87%B4%E7%A8%8B%E5%BA%8F%E5%8D%A1%E9%A1%BF/">
+              <a class="btn" href="/posts/ec6f2b24.html">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -473,7 +403,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/2022/07/23/other/hibernate/">
+    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/posts/c96d5477.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -491,7 +421,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/23/other/hibernate/" class="post-title-link" itemprop="url">hibernate随记</a>
+          <a href="/posts/c96d5477.html" class="post-title-link" itemprop="url">junit随记</a>
         </h2>
 
         <div class="post-meta-container">
@@ -501,95 +431,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-07-22 12:00:00 / 修改时间：01:31:17" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+      <time title="创建时间：2022-07-22 12:00:00" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
+        <i class="far fa-calendar-check"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h6 id="1-普通字段无法懒加载"><a href="#1-普通字段无法懒加载" class="headerlink" title="1.普通字段无法懒加载"></a>1.普通字段无法懒加载</h6><p>可以使用hibernate-enhance-maven-plugin字节码增强器。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/07/23/other/hibernate/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/2022/07/23/other/Junit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="changgg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cuukenn的博客">
-      <meta itemprop="description" content="山止川行，风禾尽起">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | cuukenn的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/23/other/Junit/" class="post-title-link" itemprop="url">junit随记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-07-22 12:00:00 / 修改时间：01:31:17" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-07-23 04:21:39" itemprop="dateModified" datetime="2022-07-23T04:21:39-08:00">2022-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -617,7 +467,7 @@
 </code></pre>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/07/23/other/Junit/#more" rel="contents">
+              <a class="btn" href="/posts/c96d5477.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -648,7 +498,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/2022/07/23/other/eclipse-rcp/">
+    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/posts/5ab84bc0.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -666,7 +516,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/23/other/eclipse-rcp/" class="post-title-link" itemprop="url">eclipse随记</a>
+          <a href="/posts/5ab84bc0.html" class="post-title-link" itemprop="url">shell脚本随记</a>
         </h2>
 
         <div class="post-meta-container">
@@ -676,9 +526,203 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-07-22 12:00:00 / 修改时间：01:31:17" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+      <time title="创建时间：2022-07-22 12:00:00" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-07-23 04:21:39" itemprop="dateModified" datetime="2022-07-23T04:21:39-08:00">2022-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h5 id="1-脚本相关"><a href="#1-脚本相关" class="headerlink" title="1.脚本相关"></a>1.脚本相关</h5><ul>
+<li>${a} 变量a的值, 在不引起歧义的情况下可以省略大括号。</li>
+<li>$(cmd) 命令替换，和<code>cmd</code>效果相同，结果为shell命令cmd的输，过某些Shell版本不支持$()形式的命令替换, 如tcsh。</li>
+<li>$((expression)) 和<code>exprexpression</code>效果相同, 计算数学表达式exp的数值, 其中exp只要符合C语言的运算规则即可, 甚至三目运算符和逻辑表达式都可以计算。</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/5ab84bc0.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/posts/1b86e9b0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="changgg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cuukenn的博客">
+      <meta itemprop="description" content="山止川行，风禾尽起">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | cuukenn的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/1b86e9b0.html" class="post-title-link" itemprop="url">windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection is established</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-07-22 12:00:00" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-07-23 04:21:39" itemprop="dateModified" datetime="2022-07-23T04:21:39-08:00">2022-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection is established</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/1b86e9b0.html">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/posts/7c79fcf3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="changgg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cuukenn的博客">
+      <meta itemprop="description" content="山止川行，风禾尽起">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | cuukenn的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/7c79fcf3.html" class="post-title-link" itemprop="url">eclipse随记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-07-22 12:00:00" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-07-23 04:21:39" itemprop="dateModified" datetime="2022-07-23T04:21:39-08:00">2022-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -727,7 +771,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/2022/07/23/other/Shell/">
+    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/posts/368e48bc.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -745,7 +789,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/23/other/Shell/" class="post-title-link" itemprop="url">shell脚本随记</a>
+          <a href="/posts/368e48bc.html" class="post-title-link" itemprop="url">hibernate随记</a>
         </h2>
 
         <div class="post-meta-container">
@@ -755,9 +799,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-07-22 12:00:00 / 修改时间：01:31:17" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+      <time title="创建时间：2022-07-22 12:00:00" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-07-23 04:21:39" itemprop="dateModified" datetime="2022-07-23T04:21:39-08:00">2022-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -779,14 +829,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h5 id="1-脚本相关"><a href="#1-脚本相关" class="headerlink" title="1.脚本相关"></a>1.脚本相关</h5><ul>
-<li>${a} 变量a的值, 在不引起歧义的情况下可以省略大括号。</li>
-<li>$(cmd) 命令替换，和<code>cmd</code>效果相同，结果为shell命令cmd的输，过某些Shell版本不支持$()形式的命令替换, 如tcsh。</li>
-<li>$((expression)) 和<code>exprexpression</code>效果相同, 计算数学表达式exp的数值, 其中exp只要符合C语言的运算规则即可, 甚至三目运算符和逻辑表达式都可以计算。</li>
-</ul>
+          <h6 id="1-普通字段无法懒加载"><a href="#1-普通字段无法懒加载" class="headerlink" title="1.普通字段无法懒加载"></a>1.普通字段无法懒加载</h6><p>可以使用hibernate-enhance-maven-plugin字节码增强器。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/07/23/other/Shell/#more" rel="contents">
+              <a class="btn" href="/posts/368e48bc.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -817,7 +863,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/2022/07/23/other/linux_cmd/">
+    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/posts/393f1206.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -835,7 +881,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/23/other/linux_cmd/" class="post-title-link" itemprop="url">linux command随记</a>
+          <a href="/posts/393f1206.html" class="post-title-link" itemprop="url">linux command随记</a>
         </h2>
 
         <div class="post-meta-container">
@@ -845,9 +891,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-07-22 12:00:00 / 修改时间：01:31:17" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+      <time title="创建时间：2022-07-22 12:00:00" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-07-23 04:21:39" itemprop="dateModified" datetime="2022-07-23T04:21:39-08:00">2022-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -896,7 +948,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/2022/07/23/other/junit-mock/">
+    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/posts/48a7290d.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -914,7 +966,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/23/other/junit-mock/" class="post-title-link" itemprop="url">junit mock随记</a>
+          <a href="/posts/48a7290d.html" class="post-title-link" itemprop="url">junit mock随记</a>
         </h2>
 
         <div class="post-meta-container">
@@ -924,9 +976,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-07-22 12:00:00 / 修改时间：01:31:17" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+      <time title="创建时间：2022-07-22 12:00:00" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-07-23 04:21:39" itemprop="dateModified" datetime="2022-07-23T04:21:39-08:00">2022-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -954,7 +1012,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Spy:用于创建一个代理的类，默认调用类的真实方法，可通过Mockito来定义重新定义返回值，而不执行原函数逻辑</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/07/23/other/junit-mock/#more" rel="contents">
+              <a class="btn" href="/posts/48a7290d.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -985,7 +1043,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/2022/07/23/other/website/">
+    <link itemprop="mainEntityOfPage" href="https://cuukenn.github.io/posts/2409a02f.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -1003,7 +1061,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/23/other/website/" class="post-title-link" itemprop="url">随便写写随记</a>
+          <a href="/posts/2409a02f.html" class="post-title-link" itemprop="url">liquibase随记</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1013,9 +1071,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-07-22 12:00:00 / 修改时间：01:31:17" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+      <time title="创建时间：2022-07-22 12:00:00" itemprop="dateCreated datePublished" datetime="2022-07-22T12:00:00-08:00">2022-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-07-23 04:21:39" itemprop="dateModified" datetime="2022-07-23T04:21:39-08:00">2022-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1037,9 +1101,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <ul>
-<li>用于加解密字符串，如被混淆的css,js等：<a target="_blank" rel="noopener" href="http://xssor.io/">http://xssor.io/</a></li>
-</ul>
+          <p>AbstractSqlStatement：修改表结构的抽象类，存在很多相关子类。</p>
+<p> Database database &#x3D; DatabaseFactory.getInstance().findCorrectDatabaseImplementation(jdbcConnection);<br> AddColumnStatement statement &#x3D; new AddColumnStatement();<br> ExecutorService.getInstance().getExecutor(database).execute(statement);</p>
 
       
     </div>
@@ -1093,7 +1156,7 @@
     <span title="站点阅读时长">18 分钟</span>
   </span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener external nofollow noreferrer" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
