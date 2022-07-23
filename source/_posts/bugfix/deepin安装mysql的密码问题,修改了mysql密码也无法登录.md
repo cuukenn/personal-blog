@@ -1,12 +1,13 @@
 ---
-title: deepin安装mysql的密码问题,修改了mysql密码也无法登录
-description: deepin安装mysql的密码问题,修改了mysql密码也无法登录
+title: 'deepin安装mysql的密码问题,修改了mysql密码也无法登录'
+description: 'deepin安装mysql的密码问题,修改了mysql密码也无法登录'
+tags:
+  - bugfix
+  - linux
+categories:
+  - program
+abbrlink: 968058fb
 date: 2022-07-22 12:00:00
-tags: 
-	- bugfix
-	- linux
-categories: 
-	- program
 ---
 
 

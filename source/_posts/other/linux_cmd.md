@@ -1,11 +1,12 @@
 ---
 title: linux command随记
-date: 2022-07-22 12:00:00
-tags: 
+tags:
   - shell
   - linux
-categories: 
+categories:
   - program
+abbrlink: 393f1206
+date: 2022-07-22 12:00:00
 ---
 
 awk

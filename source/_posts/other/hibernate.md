@@ -1,10 +1,11 @@
 ---
 title: hibernate随记
-date: 2022-07-22 12:00:00
-tags: 
+tags:
   - hibernate
-categories: 
+categories:
   - program
+abbrlink: 368e48bc
+date: 2022-07-22 12:00:00
 ---
 
 ###### 1.普通字段无法懒加载

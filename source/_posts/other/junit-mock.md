@@ -1,10 +1,11 @@
 ---
 title: junit mock随记
-date: 2022-07-22 12:00:00
-tags: 
+tags:
   - junit
-categories: 
+categories:
   - program
+abbrlink: 48a7290d
+date: 2022-07-22 12:00:00
 ---
 
 #### 优势：

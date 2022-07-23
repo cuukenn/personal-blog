@@ -1,12 +1,13 @@
 ---
 title: H2内存库MVStore引擎*.mv.db文件过大的解决办法
 description: H2内存库MVStore引擎*.mv.db文件过大的解决办法
-date: 2022-07-22 12:00:00
-tags: 
+tags:
   - bugfix
   - database
-categories: 
+categories:
   - program
+abbrlink: b04ad35d
+date: 2022-07-22 12:00:00
 ---
 
   - 原因(仅个人观点)

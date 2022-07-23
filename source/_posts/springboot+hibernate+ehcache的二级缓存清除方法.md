@@ -1,12 +1,13 @@
 ---
 title: springboot+hibernate+ehcache的二级缓存清除方法
+tags:
+  - bugfix
+  - hibernate
+  - cache
+categories:
+  - program
+abbrlink: 716c16a4
 date: 2022-07-22 12:00:00
-tags: 
-	- bugfix
-	- hibernate
-	- cache
-categories: 
-	- program
 ---
 
 1：注入EntityManager

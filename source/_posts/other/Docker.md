@@ -1,10 +1,11 @@
 ---
 title: Docker随记
-date: 2022-07-22 12:00:00
-tags: 
+tags:
   - docker
-categories: 
+categories:
   - program
+abbrlink: cf5597ac
+date: 2022-07-22 12:00:00
 ---
 
 ###### ps(总是用完就把命令给忘记了，记录一下)

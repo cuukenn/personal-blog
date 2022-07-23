@@ -1,11 +1,16 @@
 ---
-title: windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection is established
-description: windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection is established
+title: >-
+  windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection
+  is established
+description: >-
+  windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection
+  is established
+tags:
+  - bugfix
+categories:
+  - program
+abbrlink: 1b86e9b0
 date: 2022-07-22 12:00:00
-tags: 
-    - bugfix
-categories: 
-    - program
 ---
 
 **原因：**
