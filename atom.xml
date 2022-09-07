@@ -3,11 +3,11 @@
   <title>cuukenn的博客</title>
   
   <subtitle>891842749@qq.com</subtitle>
-  <link href="https://cuukenn.github.io/atom.xml" rel="self"/>
+  <link href="https://cuukenn.github.io/personal-blog/atom.xml" rel="self"/>
   
-  <link href="https://cuukenn.github.io/"/>
+  <link href="https://cuukenn.github.io/personal-blog/"/>
   <updated>2022-07-23T12:21:39.722Z</updated>
-  <id>https://cuukenn.github.io/</id>
+  <id>https://cuukenn.github.io/personal-blog/</id>
   
   <author>
     <name>changgg</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>liunx饥荒独立服务器安装、启动、停止及定时自动更新脚本</title>
-    <link href="https://cuukenn.github.io/posts/d950863.html"/>
-    <id>https://cuukenn.github.io/posts/d950863.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/d950863.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/d950863.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.722Z</updated>
     
@@ -30,17 +30,17 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="shell" scheme="https://cuukenn.github.io/tags/shell/"/>
+    <category term="shell" scheme="https://cuukenn.github.io/personal-blog/tags/shell/"/>
     
   </entry>
   
   <entry>
     <title>springboot+hibernate+ehcache的二级缓存清除方法</title>
-    <link href="https://cuukenn.github.io/posts/716c16a4.html"/>
-    <id>https://cuukenn.github.io/posts/716c16a4.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/716c16a4.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/716c16a4.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.726Z</updated>
     
@@ -55,21 +55,21 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="bugfix" scheme="https://cuukenn.github.io/tags/bugfix/"/>
+    <category term="bugfix" scheme="https://cuukenn.github.io/personal-blog/tags/bugfix/"/>
     
-    <category term="hibernate" scheme="https://cuukenn.github.io/tags/hibernate/"/>
+    <category term="hibernate" scheme="https://cuukenn.github.io/personal-blog/tags/hibernate/"/>
     
-    <category term="cache" scheme="https://cuukenn.github.io/tags/cache/"/>
+    <category term="cache" scheme="https://cuukenn.github.io/personal-blog/tags/cache/"/>
     
   </entry>
   
   <entry>
     <title>2021-10-12 日常杂记</title>
-    <link href="https://cuukenn.github.io/posts/b06b8908.html"/>
-    <id>https://cuukenn.github.io/posts/b06b8908.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/b06b8908.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/b06b8908.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.720Z</updated>
     
@@ -83,17 +83,17 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="daily-note" scheme="https://cuukenn.github.io/tags/daily-note/"/>
+    <category term="daily-note" scheme="https://cuukenn.github.io/personal-blog/tags/daily-note/"/>
     
   </entry>
   
   <entry>
     <title>2021-10-13 日常杂记</title>
-    <link href="https://cuukenn.github.io/posts/2d64687e.html"/>
-    <id>https://cuukenn.github.io/posts/2d64687e.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/2d64687e.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/2d64687e.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.721Z</updated>
     
@@ -105,17 +105,17 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="daily-note" scheme="https://cuukenn.github.io/tags/daily-note/"/>
+    <category term="daily-note" scheme="https://cuukenn.github.io/personal-blog/tags/daily-note/"/>
     
   </entry>
   
   <entry>
     <title>2021-10-15 日常杂记</title>
-    <link href="https://cuukenn.github.io/posts/d5a623c8.html"/>
-    <id>https://cuukenn.github.io/posts/d5a623c8.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/d5a623c8.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/d5a623c8.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.721Z</updated>
     
@@ -133,17 +133,17 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="daily-note" scheme="https://cuukenn.github.io/tags/daily-note/"/>
+    <category term="daily-note" scheme="https://cuukenn.github.io/personal-blog/tags/daily-note/"/>
     
   </entry>
   
   <entry>
     <title>2021-11-8 日常杂记</title>
-    <link href="https://cuukenn.github.io/posts/350c04fc.html"/>
-    <id>https://cuukenn.github.io/posts/350c04fc.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/350c04fc.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/350c04fc.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.722Z</updated>
     
@@ -160,17 +160,17 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="daily-note" scheme="https://cuukenn.github.io/tags/daily-note/"/>
+    <category term="daily-note" scheme="https://cuukenn.github.io/personal-blog/tags/daily-note/"/>
     
   </entry>
   
   <entry>
     <title>2021-10-29 日常杂记</title>
-    <link href="https://cuukenn.github.io/posts/ee2ed89c.html"/>
-    <id>https://cuukenn.github.io/posts/ee2ed89c.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/ee2ed89c.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/ee2ed89c.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.721Z</updated>
     
@@ -188,17 +188,17 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="daily-note" scheme="https://cuukenn.github.io/tags/daily-note/"/>
+    <category term="daily-note" scheme="https://cuukenn.github.io/personal-blog/tags/daily-note/"/>
     
   </entry>
   
   <entry>
     <title>H2内存库MVStore引擎*.mv.db文件过大的解决办法</title>
-    <link href="https://cuukenn.github.io/posts/b04ad35d.html"/>
-    <id>https://cuukenn.github.io/posts/b04ad35d.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/b04ad35d.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/b04ad35d.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.717Z</updated>
     
@@ -209,19 +209,19 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="bugfix" scheme="https://cuukenn.github.io/tags/bugfix/"/>
+    <category term="bugfix" scheme="https://cuukenn.github.io/personal-blog/tags/bugfix/"/>
     
-    <category term="database" scheme="https://cuukenn.github.io/tags/database/"/>
+    <category term="database" scheme="https://cuukenn.github.io/personal-blog/tags/database/"/>
     
   </entry>
   
   <entry>
     <title>deepin安装mysql的密码问题,修改了mysql密码也无法登录</title>
-    <link href="https://cuukenn.github.io/posts/968058fb.html"/>
-    <id>https://cuukenn.github.io/posts/968058fb.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/968058fb.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/968058fb.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.717Z</updated>
     
@@ -232,19 +232,19 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="bugfix" scheme="https://cuukenn.github.io/tags/bugfix/"/>
+    <category term="bugfix" scheme="https://cuukenn.github.io/personal-blog/tags/bugfix/"/>
     
-    <category term="linux" scheme="https://cuukenn.github.io/tags/linux/"/>
+    <category term="linux" scheme="https://cuukenn.github.io/personal-blog/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>Docker随记</title>
-    <link href="https://cuukenn.github.io/posts/cf5597ac.html"/>
-    <id>https://cuukenn.github.io/posts/cf5597ac.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/cf5597ac.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/cf5597ac.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.722Z</updated>
     
@@ -258,17 +258,17 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="docker" scheme="https://cuukenn.github.io/tags/docker/"/>
+    <category term="docker" scheme="https://cuukenn.github.io/personal-blog/tags/docker/"/>
     
   </entry>
   
   <entry>
     <title>hibernate普通字段懒加载集合关联无法保存的解决方法，及hibernate字节增强插件的使用</title>
-    <link href="https://cuukenn.github.io/posts/ece0d388.html"/>
-    <id>https://cuukenn.github.io/posts/ece0d388.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/ece0d388.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/ece0d388.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.717Z</updated>
     
@@ -280,19 +280,19 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="bugfix" scheme="https://cuukenn.github.io/tags/bugfix/"/>
+    <category term="bugfix" scheme="https://cuukenn.github.io/personal-blog/tags/bugfix/"/>
     
-    <category term="database" scheme="https://cuukenn.github.io/tags/database/"/>
+    <category term="database" scheme="https://cuukenn.github.io/personal-blog/tags/database/"/>
     
   </entry>
   
   <entry>
     <title>修改服务器时间导致程序卡顿</title>
-    <link href="https://cuukenn.github.io/posts/ec6f2b24.html"/>
-    <id>https://cuukenn.github.io/posts/ec6f2b24.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/ec6f2b24.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/ec6f2b24.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.720Z</updated>
     
@@ -303,19 +303,19 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="bugfix" scheme="https://cuukenn.github.io/tags/bugfix/"/>
+    <category term="bugfix" scheme="https://cuukenn.github.io/personal-blog/tags/bugfix/"/>
     
-    <category term="liunx" scheme="https://cuukenn.github.io/tags/liunx/"/>
+    <category term="liunx" scheme="https://cuukenn.github.io/personal-blog/tags/liunx/"/>
     
   </entry>
   
   <entry>
     <title>junit随记</title>
-    <link href="https://cuukenn.github.io/posts/c96d5477.html"/>
-    <id>https://cuukenn.github.io/posts/c96d5477.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/c96d5477.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/c96d5477.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.723Z</updated>
     
@@ -329,17 +329,17 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="junit" scheme="https://cuukenn.github.io/tags/junit/"/>
+    <category term="junit" scheme="https://cuukenn.github.io/personal-blog/tags/junit/"/>
     
   </entry>
   
   <entry>
     <title>shell脚本随记</title>
-    <link href="https://cuukenn.github.io/posts/5ab84bc0.html"/>
-    <id>https://cuukenn.github.io/posts/5ab84bc0.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/5ab84bc0.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/5ab84bc0.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.723Z</updated>
     
@@ -354,17 +354,17 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="shell" scheme="https://cuukenn.github.io/tags/shell/"/>
+    <category term="shell" scheme="https://cuukenn.github.io/personal-blog/tags/shell/"/>
     
   </entry>
   
   <entry>
     <title>windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection is established</title>
-    <link href="https://cuukenn.github.io/posts/1b86e9b0.html"/>
-    <id>https://cuukenn.github.io/posts/1b86e9b0.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/1b86e9b0.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/1b86e9b0.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.719Z</updated>
     
@@ -375,17 +375,17 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="bugfix" scheme="https://cuukenn.github.io/tags/bugfix/"/>
+    <category term="bugfix" scheme="https://cuukenn.github.io/personal-blog/tags/bugfix/"/>
     
   </entry>
   
   <entry>
     <title>eclipse随记</title>
-    <link href="https://cuukenn.github.io/posts/7c79fcf3.html"/>
-    <id>https://cuukenn.github.io/posts/7c79fcf3.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/7c79fcf3.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/7c79fcf3.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.724Z</updated>
     
@@ -400,17 +400,17 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="daily-note" scheme="https://cuukenn.github.io/tags/daily-note/"/>
+    <category term="daily-note" scheme="https://cuukenn.github.io/personal-blog/tags/daily-note/"/>
     
   </entry>
   
   <entry>
     <title>hibernate随记</title>
-    <link href="https://cuukenn.github.io/posts/368e48bc.html"/>
-    <id>https://cuukenn.github.io/posts/368e48bc.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/368e48bc.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/368e48bc.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.724Z</updated>
     
@@ -421,17 +421,17 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="hibernate" scheme="https://cuukenn.github.io/tags/hibernate/"/>
+    <category term="hibernate" scheme="https://cuukenn.github.io/personal-blog/tags/hibernate/"/>
     
   </entry>
   
   <entry>
     <title>linux command随记</title>
-    <link href="https://cuukenn.github.io/posts/393f1206.html"/>
-    <id>https://cuukenn.github.io/posts/393f1206.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/393f1206.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/393f1206.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.725Z</updated>
     
@@ -446,19 +446,19 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="shell" scheme="https://cuukenn.github.io/tags/shell/"/>
+    <category term="shell" scheme="https://cuukenn.github.io/personal-blog/tags/shell/"/>
     
-    <category term="linux" scheme="https://cuukenn.github.io/tags/linux/"/>
+    <category term="linux" scheme="https://cuukenn.github.io/personal-blog/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>junit mock随记</title>
-    <link href="https://cuukenn.github.io/posts/48a7290d.html"/>
-    <id>https://cuukenn.github.io/posts/48a7290d.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/48a7290d.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/48a7290d.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.724Z</updated>
     
@@ -472,17 +472,17 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="junit" scheme="https://cuukenn.github.io/tags/junit/"/>
+    <category term="junit" scheme="https://cuukenn.github.io/personal-blog/tags/junit/"/>
     
   </entry>
   
   <entry>
     <title>liquibase随记</title>
-    <link href="https://cuukenn.github.io/posts/2409a02f.html"/>
-    <id>https://cuukenn.github.io/posts/2409a02f.html</id>
+    <link href="https://cuukenn.github.io/personal-blog/posts/2409a02f.html"/>
+    <id>https://cuukenn.github.io/personal-blog/posts/2409a02f.html</id>
     <published>2022-07-22T20:00:00.000Z</published>
     <updated>2022-07-23T12:21:39.725Z</updated>
     
@@ -497,12 +497,12 @@
     
     
     
-    <category term="program" scheme="https://cuukenn.github.io/categories/program/"/>
+    <category term="program" scheme="https://cuukenn.github.io/personal-blog/categories/program/"/>
     
     
-    <category term="liquibase" scheme="https://cuukenn.github.io/tags/liquibase/"/>
+    <category term="liquibase" scheme="https://cuukenn.github.io/personal-blog/tags/liquibase/"/>
     
-    <category term="java" scheme="https://cuukenn.github.io/tags/java/"/>
+    <category term="java" scheme="https://cuukenn.github.io/personal-blog/tags/java/"/>
     
   </entry>
   

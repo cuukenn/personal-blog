@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>liunx饥荒独立服务器安装、启动、停止及定时自动更新脚本</title>
-    <url>/posts/d950863.html</url>
+    <url>personal-blog/posts/d950863.html</url>
     <content><![CDATA[<p>注：</p>
 <ul>
 <li>部分基础内容摘自：<a href="https://blog.csdn.net/szhiy/article/details/79996017">https://blog.csdn.net/szhiy/article/details/79996017</a></li>
@@ -63,7 +63,7 @@
   </entry>
   <entry>
     <title>springboot+hibernate+ehcache的二级缓存清除方法</title>
-    <url>/posts/716c16a4.html</url>
+    <url>personal-blog/posts/716c16a4.html</url>
     <content><![CDATA[<p>1：注入EntityManager</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">@PersistenceContext</span><br><span class="line">private EntityManager entityManger;</span><br></pre></td></tr></table></figure>
 
@@ -95,7 +95,7 @@
   </entry>
   <entry>
     <title>2021-10-12 日常杂记</title>
-    <url>/posts/b06b8908.html</url>
+    <url>personal-blog/posts/b06b8908.html</url>
     <content><![CDATA[<ul>
 <li><p>@JsonComponent</p>
 <ul>
@@ -183,7 +183,7 @@
   </entry>
   <entry>
     <title>2021-10-13 日常杂记</title>
-    <url>/posts/2d64687e.html</url>
+    <url>personal-blog/posts/2d64687e.html</url>
     <content><![CDATA[<ul>
 <li>java shutdownhook<span id="more"></span> 
 <ul>
@@ -213,7 +213,7 @@
   </entry>
   <entry>
     <title>2021-10-15 日常杂记</title>
-    <url>/posts/d5a623c8.html</url>
+    <url>personal-blog/posts/d5a623c8.html</url>
     <content><![CDATA[<ul>
 <li>nmctl,nmtui</li>
 <li>disputor</li>
@@ -228,7 +228,7 @@
   </entry>
   <entry>
     <title>2021-11-8 日常杂记</title>
-    <url>/posts/350c04fc.html</url>
+    <url>personal-blog/posts/350c04fc.html</url>
     <content><![CDATA[<ul>
 <li>JSR-269：java annotation(javax.annotation.processing.Processor,base on SPI)</li>
 </ul>
@@ -242,7 +242,7 @@
   </entry>
   <entry>
     <title>2021-10-29 日常杂记</title>
-    <url>/posts/ee2ed89c.html</url>
+    <url>personal-blog/posts/ee2ed89c.html</url>
     <content><![CDATA[<ul>
 <li><p>DDD Repository变更追踪</p>
 <ul>
@@ -297,7 +297,7 @@
   </entry>
   <entry>
     <title>H2内存库MVStore引擎*.mv.db文件过大的解决办法</title>
-    <url>/posts/b04ad35d.html</url>
+    <url>personal-blog/posts/b04ad35d.html</url>
     <content><![CDATA[<ul>
 <li><p>原因(仅个人观点)</p>
 </li>
@@ -371,7 +371,7 @@
   </entry>
   <entry>
     <title>deepin安装mysql的密码问题,修改了mysql密码也无法登录</title>
-    <url>/posts/968058fb.html</url>
+    <url>personal-blog/posts/968058fb.html</url>
     <content><![CDATA[<p>每次安装mysql都会出现这个问题,真的挺无语的,上次是centos7,它在安装的时候会自动生成一个密码,在log日志里</p>
 <p>查看命令大概是这样的:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /var/log/mysql/mysql.log | grep <span class="string">&quot;password&quot;</span>;</span><br></pre></td></tr></table></figure>
@@ -421,7 +421,7 @@
   </entry>
   <entry>
     <title>Docker随记</title>
-    <url>/posts/cf5597ac.html</url>
+    <url>personal-blog/posts/cf5597ac.html</url>
     <content><![CDATA[<h6 id="ps-总是用完就把命令给忘记了，记录一下"><a href="#ps-总是用完就把命令给忘记了，记录一下" class="headerlink" title="ps(总是用完就把命令给忘记了，记录一下)"></a>ps(总是用完就把命令给忘记了，记录一下)</h6><h4 id="1-安装（略）"><a href="#1-安装（略）" class="headerlink" title="1.安装（略）"></a>1.安装（略）</h4><h4 id="2-拉取容器（略）"><a href="#2-拉取容器（略）" class="headerlink" title="2.拉取容器（略）"></a>2.拉取容器（略）</h4><h4 id="3-创建容器"><a href="#3-创建容器" class="headerlink" title="3.创建容器"></a>3.创建容器</h4><pre><code>docker run -itd -v 主机路径：容器路径 -p 主机端口：容器端口 --name 命名  tag(Images的tag)
 其中，-i表示保持容器标准输入一直活动如果未断开,-t代表开启一个tty,-d表示容器后台运行
 </code></pre>
@@ -437,7 +437,7 @@
   </entry>
   <entry>
     <title>hibernate普通字段懒加载集合关联无法保存的解决方法，及hibernate字节增强插件的使用</title>
-    <url>/posts/ece0d388.html</url>
+    <url>personal-blog/posts/ece0d388.html</url>
     <content><![CDATA[<p>首先请查看<a href="https://blog.csdn.net/windsigirl123/article/details/60957632" title="Hibernate 5 &amp; JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客">Hibernate 5 &amp; JPA 2.1 延迟加载大字段属性_windsigirl123的博客-CSDN博客</a>，通过模仿这篇文章确实可以产生效果，但是出现ManyToMany的集合关联时，即存在集合关联懒加载时，不能单纯的模仿博文提到的普通字段的修改方式。</p>
 <h3 id="该情况下会产生两个问题："><a href="#该情况下会产生两个问题：" class="headerlink" title="该情况下会产生两个问题："></a>该情况下会产生两个问题：</h3><p>1.多对多懒加载关联无法保存数据，其他集合懒加载关联类似</p>
 <span id="more"></span>
@@ -466,7 +466,7 @@
   </entry>
   <entry>
     <title>修改服务器时间导致程序卡顿</title>
-    <url>/posts/ec6f2b24.html</url>
+    <url>personal-blog/posts/ec6f2b24.html</url>
     <content><![CDATA[<p><strong>原因：</strong>SimpleTimestamper.next函数的循环无法满足退出条件</p>
 <p><strong>表现：</strong></p>
 <ol>
@@ -511,7 +511,7 @@
   </entry>
   <entry>
     <title>junit随记</title>
-    <url>/posts/c96d5477.html</url>
+    <url>personal-blog/posts/c96d5477.html</url>
     <content><![CDATA[<h4 id="1-本次重新回顾，重新熟悉Junit的注解，了解新注解-Rule"><a href="#1-本次重新回顾，重新熟悉Junit的注解，了解新注解-Rule" class="headerlink" title="1.本次重新回顾，重新熟悉Junit的注解，了解新注解@Rule"></a>1.本次重新回顾，重新熟悉Junit的注解，了解新注解@Rule</h4><pre><code>    @Rule注解,可以通过实现TestRule来对方法做切面，在@Test方法运行前后加入自定义代码
     Junit也提供了一些默认Rule,如下：
       + TemporaryFolder Rule：创建一些临时目录或者文件
@@ -545,7 +545,7 @@
   </entry>
   <entry>
     <title>shell脚本随记</title>
-    <url>/posts/5ab84bc0.html</url>
+    <url>personal-blog/posts/5ab84bc0.html</url>
     <content><![CDATA[<h5 id="1-脚本相关"><a href="#1-脚本相关" class="headerlink" title="1.脚本相关"></a>1.脚本相关</h5><ul>
 <li>${a} 变量a的值, 在不引起歧义的情况下可以省略大括号。</li>
 <li>$(cmd) 命令替换，和<code>cmd</code>效果相同，结果为shell命令cmd的输，过某些Shell版本不支持$()形式的命令替换, 如tcsh。</li>
@@ -665,7 +665,7 @@
   </entry>
   <entry>
     <title>windows运行正常但是linux下程序在浏览器控制台console报websocket is closed before the connection is established</title>
-    <url>/posts/1b86e9b0.html</url>
+    <url>personal-blog/posts/1b86e9b0.html</url>
     <content><![CDATA[<p><strong>原因：</strong></p>
 <ol>
 <li>连接socket时需要通过IP获取到对应主机的域名来进行连接，此过程会相当耗时</li>
@@ -716,7 +716,7 @@
   </entry>
   <entry>
     <title>eclipse随记</title>
-    <url>/posts/7c79fcf3.html</url>
+    <url>personal-blog/posts/7c79fcf3.html</url>
     <content><![CDATA[<p>eclipse rcp即eclipse的插件项目，可以创建桌面应用</p>
 ]]></content>
       <categories>
@@ -728,7 +728,7 @@
   </entry>
   <entry>
     <title>hibernate随记</title>
-    <url>/posts/368e48bc.html</url>
+    <url>personal-blog/posts/368e48bc.html</url>
     <content><![CDATA[<h6 id="1-普通字段无法懒加载"><a href="#1-普通字段无法懒加载" class="headerlink" title="1.普通字段无法懒加载"></a>1.普通字段无法懒加载</h6><p>可以使用hibernate-enhance-maven-plugin字节码增强器。</p>
 <span id="more"></span>
 <p>注：</p>
@@ -755,7 +755,7 @@
   </entry>
   <entry>
     <title>linux command随记</title>
-    <url>/posts/393f1206.html</url>
+    <url>personal-blog/posts/393f1206.html</url>
     <content><![CDATA[<p>awk<br>sed<br>uniq<br>wc<br>sort<br>head&#x2F;tail</p>
 ]]></content>
       <categories>
@@ -768,7 +768,7 @@
   </entry>
   <entry>
     <title>junit mock随记</title>
-    <url>/posts/48a7290d.html</url>
+    <url>personal-blog/posts/48a7290d.html</url>
     <content><![CDATA[<h4 id="优势："><a href="#优势：" class="headerlink" title="优势："></a>优势：</h4><p>可以创建一个代理类来代替实际类，并注入到待测试类，可以根据需要设定返回值</p>
 <h4 id="相关注解："><a href="#相关注解：" class="headerlink" title="相关注解："></a>相关注解：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Mock</span>:用于创建一个代理的类，默认不调用实际方法，返回<span class="literal">null</span>,可通过Mockito来定义调用函数后的返回值等</span><br></pre></td></tr></table></figure>
 
@@ -854,7 +854,7 @@
   </entry>
   <entry>
     <title>liquibase随记</title>
-    <url>/posts/2409a02f.html</url>
+    <url>personal-blog/posts/2409a02f.html</url>
     <content><![CDATA[<p>AbstractSqlStatement：修改表结构的抽象类，存在很多相关子类。</p>
 <p> Database database &#x3D; DatabaseFactory.getInstance().findCorrectDatabaseImplementation(jdbcConnection);<br> AddColumnStatement statement &#x3D; new AddColumnStatement();<br> ExecutorService.getInstance().getExecutor(database).execute(statement);</p>
 ]]></content>
@@ -868,7 +868,7 @@
   </entry>
   <entry>
     <title>随便写写随记</title>
-    <url>/posts/d06ceee7.html</url>
+    <url>personal-blog/posts/d06ceee7.html</url>
     <content><![CDATA[<ul>
 <li>用于加解密字符串，如被混淆的css,js等：<a href="http://xssor.io/">http://xssor.io/</a></li>
 </ul>
