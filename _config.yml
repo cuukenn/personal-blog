@@ -4,18 +4,18 @@
 
 # Site
 title: cuukenn的博客
-subtitle: '891842749@qq.com'
-description: '山止川行，风禾尽起'
-keywords: ''
+subtitle: "891842749@qq.com"
+description: "山止川行，风禾尽起"
+keywords: ""
 author: changgg
 language: zh-CN
-timezone: 'Etc/GMT+8'
+timezone: "Etc/GMT+8"
 # URL
-url: https://cuukenn.github.io
+url: https://cuukenn.github.io/personal-blog
 permalink: posts/:abbrlink.html
 abbrlink:
-  alg: crc32  # 算法：crc16(default) and crc32
-  rep: hex    # 进制：dec(default) and hex
+  alg: crc32 # 算法：crc16(default) and crc32
+  rep: hex # 进制：dec(default) and hex
 pretty_urls:
   trailing_index: true
   trailing_html: true
@@ -24,9 +24,9 @@ theme: next
 plugins: hexo-generate-feed
 # Deployment
 deploy:
-  type: 'git'
-  repo: 'git@github.com:cuukenn/cuukenn.github.io.git'
-  branch: 'master'
+  type: "git"
+  repo: "git@github.com:cuukenn/personal-blog.git"
+  branch: "gh-pages"
 # hexo word counter
 symbols_count_time:
   total_symbols: true
@@ -45,4 +45,4 @@ nofollow:
   enable: true
   field: site
   exclude:
-    - 'cuukenn.github.io'
+    - "cuukenn.github.io"
